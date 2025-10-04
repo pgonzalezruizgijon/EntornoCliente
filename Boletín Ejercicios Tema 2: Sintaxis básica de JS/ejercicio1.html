@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1: Solicitar datos al usuario (usando prompt)</title>
+</head>
+<body>
+
+    <script>
+        let Nombre;
+        do { // Un do while para evitar el nombre vacío o con un espacio
+            Nombre = prompt ("Como te llamas?");
+
+        } while (Nombre == "" || Nombre == " "); // Está limitado a un espacio, si pones dos te dejará pero no se como se puede hacer así
+
+        let Edad;
+        do {
+            Edad = prompt ("Cuál es tu edad?") ;
+        } while (isNaN(Edad) || Edad <= 0 || Edad >= 120);
+        // isNan para que sean solo números y <=0 y > 120 para que no sean decimales y edades que no puedan ser verdad
+
+        let Altura;
+        do { // Hago el do while para que solo se pueda meter como decimal (asi me aseguro que solo es en metros y no cm)
+            Altura = Number(prompt("Cuál es tu altura en metros?")); 
+        } while (isNaN(Altura) || Altura < 0.5 || Altura > 2.2);
+        // Añado el isNaN para que no sea válido vacío ni con otro dato que no sea númerico
+
+
+        let Fumador;
+        do {
+            Fumador = prompt ("Eres fumador? S/N")
+        } while (Fumador != "S" && Fumador != "N"); // Error si no es ni S ni N la respuesta
+
+        if (Fumador == "S") {
+            Fumador = "sí";
+        } else {
+            Fumador = "no";
+        }
+
+        alert ("Te llamas " + Nombre + ", tienes " + Edad + " años, una altura de " + Altura + "m y " + Fumador + " eres fumador")
+    </script>
+
+    
+    
+</body>
+</html>
