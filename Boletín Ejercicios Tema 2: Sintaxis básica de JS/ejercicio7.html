@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7: Formulario para calcular aumento de sueldo (usando formulario)</title>
+</head>
+<body>
+
+<h2>Calculador de aumento de sueldo</h2>
+
+<form id="formulario">
+    <label>Sueldo actual:</label>
+    <input type="number" id="sueldo" min="0"> <br><br>
+
+    <label>Años de antigüedad:</label>
+    <input type="number" id="antiguedad" min="0"> <br><br>
+
+    <input type="button" value="Calcular" onclick="calcularAumento()">
+</form>
+
+<div id="resultado" style="font-weight:bold;"></div>
+
+<script>
+function calcularAumento() {
+    // Obtener valores
+    let sueldo = Number(document.getElementById("sueldo").value);
+    let antiguedad = Number(document.getElementById("antiguedad").value);
+
+    // Valido con los if los datos incorrectos
+    if (isNaN(sueldo) || sueldo < 0) {
+        alert("Introduce un sueldo válido");
+        return;
+    }
+    if (isNaN(antiguedad) || antiguedad < 0) {
+        alert("Introduce una antigüedad válida");
+        return;
+    }
+
+    let sueldoFinal = sueldo;
+
+    // Aplico las condiciones de los años de antiguedad
+    if (sueldo < 500 && antiguedad >= 10) {
+        sueldoFinal = sueldo * 1.20; // 20% de aumento
+    } else if (sueldo < 500 && antiguedad < 10) {
+        sueldoFinal = sueldo * 1.05; // 5% de aumento
+    }
+    // Si el sueldo es >=500 no se cambia ya que sería el mismo valor de sueldoFinal
+
+    // Mostrar resultado en el div
+    document.getElementById("resultado").innerText = "El sueldo a pagar es: " + sueldoFinal.toFixed(2) + " €";
+}
+</script>
+
+</body>
+</html>
