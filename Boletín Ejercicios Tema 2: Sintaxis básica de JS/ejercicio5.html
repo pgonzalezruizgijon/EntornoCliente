@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5: Calcular la nota media y mostrar si ha aprobado (usando formulario)</title>
+</head>
+<body>
+    <h2>Calculador de nota media</h2><br>
+
+    <form id="Formulario">
+
+        <label>Nota primer trimestre:</label>
+        <input type="number" id="nota1" style="width: 40px;"> <br><br>
+
+        <label>Nota segundo trimestre:</label>
+        <input type="number" id="nota2" style="width: 40px;"> <br><br>
+
+        <label>Nota tercer trimestre:</label>
+        <input type="number" id="nota3" style="width: 40px;"> <br><br>
+
+        <input type="button" id="botoncomprobar" value="Comprobar" onclick="obtenerResultado()">
+
+    </form>
+
+    <script>
+
+        // Creamos la función para obtener el resultado en las variable y mostrarlo
+        function obtenerResultado() {
+
+            // Guardo las notas en un array
+            let notas = [
+                Number(document.getElementById("nota1").value),
+                Number(document.getElementById("nota2").value),
+                Number(document.getElementById("nota3").value),
+            ];
+
+            for (let i = 0; i < notas.length; i++) {
+                if (isNaN(notas[i]) || notas[i] < 0 || notas[i] > 10) {
+                    alert("La nota introducida del trimestre " + (i+1) + " no es válida");
+                    return;
+                }
+            }
+
+            let resultado = calcularNotaMedia(notas).toFixed(2); // Máximo dos decimales, para evitar los números periódicos
+           
+            if (resultado < 5) {
+                alert("La nota media es " + resultado + ". El alumno suspende")
+            } else {
+                alert("La nota media es " + resultado + ". El alumno aprueba")
+            }
+
+        }
+
+        function calcularNotaMedia(notas) {
+            let resultado = (notas[0]+notas[1]+notas[2])/3;
+
+            return resultado;
+        }
+
+    </script>
+
+
+</body>
+</html>
