@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8: Tabla de multiplicar simple</title>
+</head>
+<body>
+
+<h2>Generador de tabla de multiplicar (simple)</h2>
+
+<form id="formulario">
+    <label>Tabla de multiplicar:</label>
+    <input type="number" id="numero" min="1"> <br><br>
+
+    <label>Valor máximo:</label>
+    <input type="number" id="maximo" min="1"> <br><br>
+
+    <input type="button" value="Generar tabla" onclick="generarTabla()">
+</form>
+
+<div id="resultado"></div>
+
+<script>
+function generarTabla() {
+        // Obtengo los valores del formulario
+    let numero = Number(document.getElementById("numero").value);
+    let maximo = Number(document.getElementById("maximo").value);
+
+    // Valido los datos para evitar datos incorrectos
+    if (isNaN(numero) || numero <= 0) {
+        alert("Introduce un número válido para la tabla.");
+        return;
+    }
+    if (isNaN(maximo) || maximo <= 0) {
+        alert("Introduce un valor máximo válido.");
+        return;
+    }
+
+    // Genero la tabla con un bucle
+    let resultado = "";
+    for (let i = 1; i <= maximo; i++) {
+        resultado = resultado + numero + " x " + i + " = " + (numero * i) + "\n";
+    }
+
+    // Mostrar resultado en el div
+    document.getElementById("resultado").innerText = resultado;
+}
+</script>
+
+</body>
+</html>
