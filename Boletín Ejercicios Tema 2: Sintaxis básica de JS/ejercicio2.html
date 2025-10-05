@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2: Solicitar datos al usuario mediante un formulario web (usando formulario)</title>
+</head>
+<body>
+    <!-- Nombre, edad, altira y fumador -->
+
+    <form id="Formulario">
+        <label>Nombre:</label>
+        <input type="text" id="nombre"> <br><br>
+
+        <label>Edad:</label>
+        <input type="number" id="edad"> <br><br>
+
+        <label>Altura:</label>
+        <input type="number" id="altura" placeholder="En metros (ej: 1.70)"> <br><br>
+
+        <label>¿Fumador?</label>
+        <input type="checkbox" id="fumador"><br> <br>
+
+
+        <!-- Creo el botón de resultado y el text area. Al hacer click la función "mostrarResultado" envía los datos al formulario -->
+        <input type="button" id="botonresultado" value="Mostrar resultado" onclick="mostrarResultado()"><br>
+        <textarea id="resultado" rows="4" cols="30"></textarea>
+
+
+        <script>
+
+            // Creo la funcion para envíar los datos en el text area
+            function mostrarResultado() {
+                // Creo las variables y cojo los datos de los formularios con getElementById (value es para que coja lo que escribo el usuario)
+                let nombre = document.getElementById("nombre").value;
+                let edad = document.getElementById("edad").value; 
+                let altura = document.getElementById("altura").value;  
+                let fumador = document.getElementById("fumador").checked;
+                
+                // Si lo enviamos asi, llegaria al formulario true y false porque es booleano, por lo que cambio sus valores a sí y no
+                if (fumador == true) {
+                    fumador = "sí";
+                } else {
+                    fumador == "no";
+                }
+
+                // Me aseguro que no se deje vacío el nombre
+                //Ahora uso .trim porque he investigado y es para no dejar espacios en blanco mejorando la lógica que use en el ejercicio 1
+                if (nombre.trim() == "") {
+                    alert("Introduce tu nombre");
+                }
+
+
+                let texto = "Te llamas " + nombre + ", tienes " + edad + " años, una altura de " + altura + "m y " + fumador + " eres fumador";
+                document.getElementById("resultado").value = texto;
+            }
+
+        </script>
+
+    </form>
+</body>
+</html>
