@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4: Calcular el volumen de un cilindro (usando un formulario)</title>
+</head>
+<body>
+
+    <h2>Calcular volumen de un cilindo</h2><br>
+    <form id="Formulario">
+
+        <label>Radio</label>
+        <input type="number" id="radio"> <br><br>
+
+        <label>Altura</label>
+        <input type="number" id="altura"> <br><br>
+
+        <!-- Botón para mostrar el resultado -->
+        <input type="button" id="botonresultado" value="Calcular" onclick="mostrarResultado()"><br>
+        <textarea id="resultado" rows="4" cols="30"></textarea>
+
+    </form>
+    
+
+    <script>
+    
+        // Creo la funcion para envíar los datos en el text area
+        function mostrarResultado() {
+            let radio = Number(document.getElementById("radio").value);
+            let altura = Number(document.getElementById("altura").value);
+
+            // if para que se introduzcan solo números positivos
+            if (isNaN(radio) || isNaN(altura) || radio <= 0 || altura <= 0) {
+                alert("Introduce valores válidos para el radio y la altura");
+                return;
+            }
+
+            let resultado = volumenCilindro(radio, altura);
+            let texto = "El volumen del cilindro es: " + resultado.toFixed(2); // toFixed limita los decimales, en este caso a dos
+            document.getElementById("resultado").value = texto;
+        }
+
+        // Función para calcular el volumen
+        function volumenCilindro(radio, altura) {
+            return Math.PI * radio * radio * altura;
+        }
+
+    </script>
+</body>
+</html>
