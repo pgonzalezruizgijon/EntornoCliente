@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3: Solicitar varios números decimales al usuario mediante un bucle (usando prompt)</title>
+</head>
+<body>
+
+    <script>
+        let cantidadNumeros;
+        let numerosIntroducidos = [];
+        let suma = 0;
+    
+        // Pedir al usuario cuántos números quiere introducir
+        do {
+            cantidadNumeros = prompt("Cuántos números deseas introducir?");
+        } while (isNaN(cantidadNumeros) || cantidadNumeros <= 0);
+    
+        cantidadNumeros = Number(cantidadNumeros);
+    
+        // Bucle para pedir cada número
+        for (let i = 0; i < cantidadNumeros; i++) {
+            let numero;
+            do {
+                numero = prompt(`Introduce el número ${i + 1}:`);
+                numero = Number(numero);
+            } while (isNaN(numero)); // Repetir el bucle si no es un número
+        
+            numerosIntroducidos[i] = numero; // Guardamos en el array el número
+            suma += numero;                   // Sumamos los números en total por cada repetición
+        }
+
+        alert("La suma de todos los números es: " + suma);
+    </script>
+    
+</body>
+</html>
