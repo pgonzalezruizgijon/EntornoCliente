@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6: Calcular porcentaje de aciertos en un test (usando formulario)</title>
+</head>
+<body>
+
+<h2>Calculador de porcentaje de aciertos</h2>
+
+<form id="formulario">
+    <label>Número de preguntas:</label>
+    <input type="number" id="preguntas" min="1"> <br><br>
+
+    <label>Respuestas acertadas:</label>
+    <input type="number" id="acertadas" min="0"> <br><br>
+
+    <input type="button" value="Calcular" onclick="calcularPorcentaje()">
+</form>
+
+<!-- Div para mostrar el resultado -->
+<div id="resultado" style="font-weight: bold;"></div>
+
+<script>
+function calcularPorcentaje() {
+    // Obtengo los valores de los inputs
+    let numPreguntas = Number(document.getElementById("preguntas").value);
+    let numAcertadas = Number(document.getElementById("acertadas").value);
+
+    // if para validar los datos
+    if (isNaN(numPreguntas) || numPreguntas <= 0) {
+        alert("Introduce un número válido de preguntas");
+        return;
+    }
+
+    // Me aseguro que no haya mas respuestas acertadas que preguntas
+    if (isNaN(numAcertadas) || numAcertadas < 0 || numAcertadas > numPreguntas) {
+        alert("Introduce un número válido de respuestas acertadas");
+        return;
+    }
+
+    // Calcular porcentaje
+    let porcentaje = (numAcertadas / numPreguntas) * 100;
+    let mensaje = "";
+
+    // Determinar mensaje según porcentaje
+    if (porcentaje >= 90) {
+        mensaje = "Excelente";
+    } else if (porcentaje >= 75) {
+        mensaje = "Muy bien";
+    } else if (porcentaje >= 50) {
+        mensaje = "Bien";
+    } else {
+        mensaje = "Resultado ineficiente";
+    }
+
+    // Mostrar mensaje en el div (innerText para mostrarlo en el div)
+    document.getElementById("resultado").innerText = "Porcentaje: " + porcentaje.toFixed(2) + "% → " + mensaje;
+
+}
+</script>
+
+</body>
+</html>
