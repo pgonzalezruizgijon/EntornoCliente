@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1: Función calificación de una nota numérica</title>
+</head>
+<body>
+
+    <form id="Formulario">
+
+        <label>Pulsa para añadir tu nota</label>
+        <input type="button" id="botonNotas" onclick="introducirNota()" style="width: 30px;"> <br><br>
+
+    </form>
+
+    <script>
+
+        let nota;
+
+        function introducirNota() {
+            do {
+                nota = prompt ("Cuál es tu nota?") ;
+            }while (isNaN(nota));
+            // isNan para que sean solo números
+
+            alert(verCalificacion(nota));
+        }
+
+        // Función para ver la calificación dependiendo de la nota
+        function verCalificacion(nota) {
+            if (nota >= 0 && nota < 5) {
+                return "INSUFICIENTE";
+            } else if (nota >= 5 && nota < 6) {
+                return "SUFICIENTE";
+            } else if (nota >= 6 && nota < 7) {
+                return "BIEN";
+            } else if (nota >= 7 && nota < 9) {
+                return "NOTABLE";
+            } else if (nota >= 9 && nota <= 10) {
+                return "SOBRESALIENTE";
+            } else {
+                return "VALOR INCORRECTO";
+            }
+        }
+
+        // Parte 3
+        function testeo1() {
+            let notas = [-1.5, 0, 1, 2, 3, 4.5, 4.9, 5, 5.1, 5.9, 6, 6.1, 6.9, 7, 7.1, 7.9, 8, 8.1, 8.9, 9, 9.1, 9.9, 10, 11];
+            for (let i = 0; i < notas.length; i++) {
+                console.log("Nota:" + notas[i] + "=" + verCalificacion(notas[i]));
+                
+            }
+        }
+        
+
+        // Parte 4
+        function testeo2() {
+            let datos = [
+                { nota: -1.5, valorEsperado: "VALOR INCORRECTO" },
+                { nota: 0, valorEsperado: "INSUFICIENTE" },
+                { nota: 1, valorEsperado: "INSUFICIENTE" },
+                { nota: 4.5, valorEsperado: "INSUFICIENTE" },
+                { nota: 4.9, valorEsperado: "INSUFICIENTE" },
+                { nota: 5, valorEsperado: "SUFICIENTE" },
+                { nota: 5.1, valorEsperado: "SUFICIENTE" },
+                { nota: 5.9, valorEsperado: "SUFICIENTE" },
+                { nota: 6, valorEsperado: "BIEN" },
+                { nota: 6.9, valorEsperado: "BIEN" },
+                { nota: 7, valorEsperado: "NOTABLE" },
+                { nota: 7.9, valorEsperado: "NOTABLE" },
+                { nota: 8, valorEsperado: "NOTABLE" },
+                { nota: 8.9, valorEsperado: "NOTABLE" },
+                { nota: 9, valorEsperado: "SOBRESALIENTE" },
+                { nota: 9.9, valorEsperado: "SOBRESALIENTE" },
+                { nota: 10, valorEsperado: "SOBRESALIENTE" },
+                { nota: 11, valorEsperado: "VALOR INCORRECTO" }
+            ];
+
+            for (let i = 0; i < datos.length; i++) {
+                console.log("Nota: " + datos[i].nota + " Valor esperado: " +datos[i].valorEsperado + " Resultado: " + verCalificacion(datos[i].nota));
+                
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
