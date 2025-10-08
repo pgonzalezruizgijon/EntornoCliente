@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2: Función comprobar si un año es bisiesto</title>
+</head>
+<body>
+    
+
+    <script>
+
+        function esBisiesto(año) {
+            if ((año % 4 === 0 && año % 100 !== 0) || (año % 400 === 0)) { // Bisiesto  
+                return true;
+            } else { // No bisiesto
+                return false;
+            }
+        }
+
+        let añoUsuario = parseInt(prompt("Ingrese un número"));
+
+        for (let i = 1901; i <= 2100; i++) {
+            if (esBisiesto(i) == true) {
+                console.log(`El año ${i} es bisiesto`)
+            }
+        }
+
+        let aniosprueba = [1600, 2000, 2016, 2020, 2400, 1700, 1800, 1900, 2015, 2019];
+
+        for (let i = 0; i < aniosprueba.length; i++) {
+            if (esBisiesto(aniosprueba[i]) == true) {
+                console.log(`El año ${aniosprueba[i]} es bisiesto`)
+            } else {
+                console.log(`El año ${aniosprueba[i]} no es bisiesto`)
+            }
+            
+        }
+
+    </script>
+
+</body>
+</html>
