@@ -10,9 +10,74 @@
 
     <script>
 
+        let array = [];
+        // Creo una variable para saber de cuantos números será el array para así determinar la duración del bucle
+        let cantidad = parseInt(prompt("Cuantos números deseas para la media aritmética?")) 
+
+        for (let i = 0; i < cantidad; i++) {
+                array[i] = parseInt(prompt("Introduce el número " + (i + 1) + " para la media: "))
+                
+            }
+
+
+        let decimales = 0;
+
+        do {
+
+            let introducirDecimales = (prompt("Cuantos decimales deseas para redondear la nota?"));
+
+            if (introducirDecimales == "" || introducirDecimales == null) {
+                decimales = 1; // Por defecto un decimal si está vacío
+                break;
+            } else if (isNaN(introducirDecimales)) { // Si no es un número no es válido
+                alert("Debes de introducir un número");
+            } else if (parseInt(introducirDecimales) < 0) { // Si es menor que 0, no es válido
+                alert("Debe de ser un entero positivo");
+            } else {
+                decimales = parseInt(introducirDecimales); // Coge el valor de los decimales introducidos la variable decimales
+                break;
+            }           
+            
+        } while (true);
+
+        alert(calculaMedia(array,decimales));
+
         function calculaMedia(array,decimales) {
+
+            let suma = 0;
+
+            for (let i = 0; i < array.length; i++) { // Bucle que almmacena la suma anterior y suma todas las posiciones del array
+                suma += array[i];
+            }
+            
+        let media = suma / array.length;
+
+        return Number(media.toFixed(decimales)); // Redondeado al numero de decimales
             
         }
+
+        function testeo() {
+            // Test 1: Array normal con 1 decimal por defecto
+            let test1 = calculaMedia([10, 20, 30]);
+            console.log("Test 1 - [10, 20, 30] (1 decimal):", test1, test1 === 20.0);
+
+            // Test 2: Array con 2 decimales específicos
+            let test2 = calculaMedia([1, 2, 3, 4], 2);
+            console.log("Test 2 - [1, 2, 3, 4] (2 decimales):", test2, test2 === 3.00);
+
+            // Test 3: Array con 0 decimales
+            let test3 = calculaMedia([7, 8, 9], 0);
+            console.log("Test 3 - [7, 8, 9] (0 decimales):", test3, test3 === 8);
+
+            // Test 4: Un solo número
+            let test4 = calculaMedia([5], 1);
+            console.log("Test 4 - [5] (1 decimal):", test4, test4 === 6.0);
+
+            // Test 5: Números decimales
+            let test5 = calculaMedia([1.5, 2.5, 3.5], 1);
+            console.log("Test 5 - [1.5, 2.5, 3.5] (1 decimal):", test5, test5 === 2.5);
+        }
+
 
     </script>
     
