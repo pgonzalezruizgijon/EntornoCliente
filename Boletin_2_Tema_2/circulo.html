@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+
+    <script>
+
+
+        let radio;
+
+        do {
+            radio = parseFloat(prompt("Ingrese el radio del círculo:"));
+        
+            if (radio < 0) {
+                alert("El radio no puede ser negativo.");
+            } else if (isNaN(radio)) {
+                alert("El valor ingresado no es un número válido.");
+            } else {
+                break;
+            }
+        } while (true);
+
+        
+
+        function calculoCirculo_v1(radio){
+
+            let perimetro = 2 * Math.PI * radio.toFixed(2);
+            let area = Math.PI * Math.pow(radio, 2).toFixed(2);
+            
+            return perimetro, area;
+
+            function calculoCirculo_v2(radio) {
+
+                let perimetro = 2 * Math.PI * radio.toFixed(2);
+                let area = Math.PI * Math.pow(radio, 2).toFixed(2);
+                
+                return {perimetro, area};
+                
+            }
+        }
+
+       
+    // Devolver los datos en un array está bien si son pocos valores y siempre sabemos en qué orden vienen, porque es rápido de escribir y usar. Pero se puede volver confuso si alguien más lee el código y no sabe qué representa cada posición del array.
+    // Devolver un objeto literal me parece más práctico porque cada dato tiene su nombre, como area o perimetro, y así se entiende mejor lo que devuelve la función. Además si en el futuro quiero agregar más valores, como el diámetro o el radio, es mucho más fácil con un objeto que con un array.
+    // Por eso, yo normalmente usaría un objeto literal.
+           
+
+    </script>
+    
+</body>
+</html>
