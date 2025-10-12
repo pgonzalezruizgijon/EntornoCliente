@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+
+    <script>
+
+        let cilindro = parseFloat(prompt({radio: null, altura: null}));
+
+        function volumenCilindro(cilindro) {
+
+            let volumen = Math.PI * Math.pow(cilindro.radio, 2) * cilindro.altura.toFixed(2);
+            return volumen;
+        }
+
+        function test() {
+            let objeto = {radio: 5, altura: 10};
+            console.log(volumenCilindro(objeto));
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
