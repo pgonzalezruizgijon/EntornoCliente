@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+
+    <script>
+
+        const frase = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let buscarCuyo = "cuyo";
+        let posicion = frase.indexOf(buscarCuyo);
+        console.log("La palabra '" + buscarCuyo + "' se encuentra en la posición: " + posicion);
+
+        let lugar = "lugar";
+        let buscarLugar = lugar.indexOf(lugar, 12); // Dará -1 porque se encuentra en la posición 6 y no a partir de la 12
+        console.log(buscarLugar);
+
+    </script>
+    
+</body>
+</html>
