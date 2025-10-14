@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+
+    <script>
+
+        const frase = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let extraerLugar = "lugar";
+        let posicion = frase.indexOf(extraerLugar);
+        let lugarExtraido = frase.substr(posicion, extraerLugar.length);
+        
+        let extraerLugar2 = "lugar"
+        let posicion2 = frase.indexOf(extraerLugar2);
+        let lugarExtraido2 = frase.substring(posicion2, posicion2 + extraerLugar2.length);
+        
+        console.log("Lugar extraído con substr: " + lugarExtraido);
+        console.log("Lugar extraído con substring: " + lugarExtraido2);
+
+    </script>
+    
+</body>
+</html>
