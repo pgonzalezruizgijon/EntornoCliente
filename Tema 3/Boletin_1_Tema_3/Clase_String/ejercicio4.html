@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+
+    <script>
+
+        let frase = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        console.log("La frase tiene " + frase.length + " carácteres");
+
+        let Mancha = "Mancha";
+        let posicion = frase.indexOf(Mancha);
+        console.log("La palabra '" + Mancha + "' se encuentra en la posición: " + posicion);
+
+        let  Quijote = "Quijote";
+        let posicion2 = frase.indexOf(Quijote); // Si no lo encuentra devuelve -1
+        console.log("La palabra '" + Quijote + "' se encuentra en la posición: " + posicion2); 
+
+        let ultimoDe = "de";
+        let posicion3 = frase.lastIndexOf(ultimoDe);
+        console.log("El ultimo '" + ultimoDe + "' se encuentra en la posición: " + posicion3);
+    </script>
+    
+</body>
+</html>
