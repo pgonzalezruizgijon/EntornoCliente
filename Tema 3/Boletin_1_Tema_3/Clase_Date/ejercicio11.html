@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+
+    <script>
+
+
+
+        function diasTranscurridos(fecha1, fecha2) {
+            const unDia = 1000 * 60 * 60 * 24; // Calculo los milisegundos en un día
+            let diferencia = Math.abs(fecha2 - fecha1); // Diferencia en milisegundos de las fechas
+            return Math.floor(diferencia / unDia); // Convierto a días
+        }
+
+        let fecha1 = new Date(2025, 6, 14);
+        let fecha2 = new Date(2025, 8, 8);
+
+        console.log("Días transcurridos entre " + fecha1.toDateString() + " y " + fecha2.toDateString() + ": " + diasTranscurridos(fecha1, fecha2));
+
+</script>
+    
+</body>
+</html>
