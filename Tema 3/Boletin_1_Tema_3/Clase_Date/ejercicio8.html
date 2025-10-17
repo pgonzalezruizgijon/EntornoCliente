@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+
+    <script>
+
+        const fechaActual = new Date();
+        const diferenciaHoras = fechaActual.getHours() - fechaActual.getUTCHours();
+        console.log("Diferencia entre getHours y getUTCHours: ", diferenciaHoras);
+        // La diferencia es por la zona horaria en la que nos encontramos respecto a la hora UTC.
+
+    </script>
+    
+</body>
+</html>
