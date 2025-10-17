@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+
+    <script>
+
+        let fecha1 = new Date(2021, 1, 28);
+        fecha1.setDate(fecha1.getDate() + 1);
+        console.log("Día siguiente a 28/2/2021:", fecha1.toDateString());
+
+        let fecha2 = new Date(2020, 1, 28);
+        fecha2.setDate(fecha2.getDate() + 1);
+        console.log("Día siguiente a 28/2/2020:", fecha2.toDateString());
+
+        // La diferencia es porque la fecha 2 el año es 2020 que es bisiesto y febrero tiene 29 días
+
+    </script>
+    
+</body>
+</html>
