@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+
+    <script>
+
+        function obtenerDia(numeroDia) {
+            let diasSemana = [
+                'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado' // Array de los días
+            ];
+            return diasSemana[numeroDia];
+        }
+
+        let fecha = new Date();
+        let numeroDia = fecha.getDay();
+        let nombreDia = obtenerDia(numeroDia);
+        console.log("El día de la semana es: " + nombreDia);
+
+    </script>
+    
+</body>
+</html>
