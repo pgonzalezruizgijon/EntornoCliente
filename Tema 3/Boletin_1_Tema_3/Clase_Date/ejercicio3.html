@@ -8,8 +8,20 @@
 <body>
 
     <script>
+        function obtenerMes(numeroMes) {
+            let meses = [
+                'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' // Array de los meses
+            ];
+            return meses[numeroMes];
+        }
 
-        
+        let fecha = new Date();
+        let numeroMes = fecha.getMonth();
+        let nombreMes = obtenerMes(numeroMes);
+        console.log("El mes actual es: ", nombreMes);
+
+
 
     </script>
     
