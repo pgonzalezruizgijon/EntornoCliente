@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Array</title>
+</head>
+<body>
+
+    
+    <script>
+    // Ejercicio 1
+    let ej1_array1 = ['Plátanos', 'Naranjas', 'Pomelos', 'Fresas', 'Limones']; // literal
+    let ej1_array2 = new Array('Plátanos', 'Naranjas', 'Pomelos', 'Fresas', 'Limones'); // constructor
+    let ej1_array3 = Array.of('Plátanos', 'Naranjas', 'Pomelos', 'Fresas', 'Limones'); // Array.of
+    let ej1_array4 = 'Plátanos,Naranjas,Pomelos,Fresas,Limones'.split(','); // desde string con split
+    console.log('Ej1:', ej1_array1, ej1_array2, ej1_array3, ej1_array4); // Pondre este en todos para distinguir desde consola cada ejercicio
+
+    // Ejercicio 2
+    let ej2_array1 = [5, 2, , 3, -2, 7, , 9];
+    let ej2_suma = ej2_array1.reduce((acc, val, idx, arr) => acc + (idx in arr ? val : 0), 0);
+    console.log('Ej2:', ej2_array1, 'Suma:', ej2_suma); // Los huecos los trato como 0
+
+    // Ejercicio 3
+    let ej3_array1 = ['Huelva', 'Sevilla', 'Córdoba'];
+    ej3_array1.push('Jaén', 'Granada');
+    console.log('Ej3 con push:', ej3_array1);
+    let ej3_extraido = ej3_array1.pop();
+    console.log('Ej3 con elemento extraído con pop:', ej3_extraido);
+    console.log('Ej3 array tras pop:', ej3_array1);
+
+    // Ejercicio 4
+    let ej4_array1 = ['Huelva', 'Sevilla', 'Córdoba'];
+    ej4_array1.unshift('Cádiz');
+    console.log('Ej4 después unshift:', ej4_array1);
+    let ej4_extraido = ej4_array1.shift();
+    console.log('Ej4 elemento extraído con shift:', ej4_extraido);
+    console.log('Ej4 array tras shift:', ej4_array1);
+
+    // Ejercicio 5
+    let ej5_array1 = ['Huelva', 'Sevilla', 'Córdoba'];
+    delete ej5_array1[1];
+    console.log('Ej5 después delete en posición 1:', ej5_array1);
+    console.log('Ej5 contenido en índice 1:', ej5_array1[1]); // suele ser undefined, pero la longitud permanece
+
+    // Ejercicio 6
+    let ej6_array1 = ['Huelva', 'Sevilla', 'Córdoba', 'Jaén', 'Almería', 'Granada', 'Málaga', 'Cádiz'];
+    ej6_array1.sort((a,b) => a.localeCompare(b));
+    console.log('Ej6 orden alfabético:', ej6_array1);
+    ej6_array1.reverse();
+    console.log('Ej6 orden inverso:', ej6_array1);
+
+    // Ejercicio 7
+    let ej7_array1 = ['Plátanos', 'Naranjas', 'Pomelos', 'Fresas'];
+    let ej7_eliminados = ej7_array1.splice(1, 1); // elimina 'Naranjas'
+    console.log('Ej7 tras eliminar con splice:', ej7_array1, 'Eliminado:', ej7_eliminados);
+    ej7_array1.splice(1, 0, 'Limones');
+    console.log('Ej7 tras insertar Limones:', ej7_array1);
+
+    // Ejercicio 8
+    let ej8_array1 = ['Plátanos', 'Naranjas', 'Pomelos', 'Fresas'];
+    let ej8_extraido = ej8_array1.slice(2, 3); // devuelve array con el elemento
+    console.log('Ej8 elemento extraído con slice (tercer elemento):', ej8_extraido);
+    console.log('Ej8 array original tras slice (no modificado):', ej8_array1);
+
+    // Ejercicio 9
+    let ej9_array1 = ['Plátanos', 'Naranjas', 'Pomelos'];
+    let ej9_array2 = ['Cebollas', 'Pepinos', 'Pimientos'];
+    let ej9_concat = ej9_array1.concat(ej9_array2);
+    console.log('Ej9 arrays concatenados:', ej9_concat);
+
+    // Ejercicio 10
+    let ej10_array1 = ['Plátanos', 'Naranjas', 'Pomelos'];
+    console.log('Ej10 recorrido con for:');
+    for (let i = 0; i < ej10_array1.length; i++) console.log(ej10_array1[i]);
+    console.log('Ej10 recorrido con while:');
+    let ej10_i = 0;
+    while (ej10_i < ej10_array1.length) {
+        console.log(ej10_array1[ej10_i]);
+        ej10_i++;
+    }
+    console.log('Ej10 recorrido con forEach:');
+    ej10_array1.forEach(e => console.log(e));
+    console.log('Ej10 recorrido con dowhile:');
+    let ej10_j = 0;
+    if (ej10_array1.length > 0) {
+        do {
+            console.log(ej10_array1[ej10_j]);
+            ej10_j++;
+        } while (ej10_j < ej10_array1.length);
+    }
+
+    // Ejercicio 11
+    let ej11_array1 = ['Plátanos', 'Naranjas', 'Pomelos', 'Fresas'];
+    let ej11_posPomelos = ej11_array1.indexOf('Pomelos');
+    let ej11_posSandia = ej11_array1.indexOf('Sandía');
+    console.log('Ej11 posición de Pomelos:', ej11_posPomelos);
+    console.log('Ej11 búsqueda de Sandía (no existe):', ej11_posSandia);
+
+    // Ejercicio 12
+    let ej12_array1 = ['Plátanos', 'Naranjas', 'Pomelos', 'Fresas'];
+    console.log('Ej12 contiene Naranjas?', ej12_array1.includes('Naranjas'));
+    console.log('Ej12 contiene Peras?', ej12_array1.includes('Peras'));
+
+    // Ejercicio 13
+    let ej13_array1 = [2, 12, 22, 30, 36];
+    let ej13_todosPares = ej13_array1.every(n => n % 2 === 0);
+    console.log('Ej13 todos pares (primer array):', ej13_todosPares);
+    let ej13_array2 = [2, 12, 22, 7, 30, 36];
+    let ej13_todosPares2 = ej13_array2.every(n => n % 2 === 0);
+    console.log('Ej13 todos pares (segundo array):', ej13_todosPares2);
+
+    // Ejercicio 14
+    let ej14_array1 = [2, 9, 7, 5.4, 8];
+    let ej14_cuadrados = ej14_array1.map(n => n * n);
+    console.log('Ej14 array original:', ej14_array1, 'Cuadrados:', ej14_cuadrados);
+
+    // Ejercicio 15
+    let ej15_array1 = [2, 7, 22, 3, 30, 17];
+    let ej15_impares = ej15_array1.filter(n => n % 2 !== 0);
+    console.log('Ej15 impares:', ej15_impares);
+
+    // Ejercicio 16
+    let ej16_array1 = [2, 12, 7, 22, 3, 30, 17];
+    let ej16_primerImpar = ej16_array1.find(n => n % 2 !== 0);
+    console.log('Ej16 primer impar encontrado:', ej16_primerImpar);
+
+    // Ejercicio 17
+    let ej17_array1 = ['Plátanos', 'Naranjas', 'Pomelos', 'Plátanos', 'Fresas'];
+    let ej17_lastIndexPlatanos = ej17_array1.lastIndexOf('Plátanos');
+    console.log('Ej17 última posición de Plátanos:', ej17_lastIndexPlatanos);
+    </script>
+    
+</body>
+</html>
