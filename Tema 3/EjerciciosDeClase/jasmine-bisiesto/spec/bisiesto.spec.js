@@ -30,6 +30,21 @@ describe("Testeo de la función esBisiesto()", function(){
    }
  )
 
+ // Comprobar que la función devuelve un booleano
+ it('La función debería devolver un booleano', () => {
+   expect(esBisiesto(2025)).toBeInstanceOf(Boolean);
+ });
+
+ // Comprobar que la función lanza una excepción cuando la invocamos sin argumentis
+ it('La función debería lanzar una excepción cuando la invocamos sin argumento'), () => {
+   expect( () => (esBisiesto()).toThrowError());
+ }
+
+ // Comprobar que la función lanza un error cuando la invocamos un año negativo
+ it('La función debería lanzar una excepción cuando la invocamos con un año negativo'), () => {
+   expect( () => {esBisiesto(-10)}.toThrowError();
+ }
+
 
 
 })
