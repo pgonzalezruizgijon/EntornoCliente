@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio de clase</title>
+</head>
+<body>
+
+    <script>
+
+        let fechaStr = "21/10/2025" // 21 de octubre de 2025
+        let dia = Number(fechaStr.split("/")[0]); //21 como number
+        let mes = Number(fechaStr.split("/")[1]); //10 como number
+        let año = Number(fechaStr.split("/")[2]); //2025 como number
+        let fecha = new Date(año, mes -1, dia);
+        console.log(fecha.toLocaleDateString());
+
+
+
+    </script>
+    
+</body>
+</html>
