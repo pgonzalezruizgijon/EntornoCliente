@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrar los elementos impares</title>
+</head>
+<body>
+
+    <script>
+
+        let datos = [5, 7, 2, 10, 2, 1]
+        //let impares = datos.filter(n => n % 2 !== 0); Con filter
+
+        let datosFiltrados = [];
+        for (let i = 0; i < datos.length; i++){
+            if (datos[i] % 2 !== 0) {
+                datosFiltrados.push(datos[i]);
+            }
+        }
+        console.log(datosFiltrados);
+
+        // Programación declarativa usando filter
+        function numeroImpar(num) {
+            return num % 2 != 0;
+        }
+
+        let datosFiltrados2 = datos.filter(numeroImpar);
+        console.log(datosFiltrados2);
+
+        let datosFiltrados3 = datos.filter(
+            function (num) {
+                return num % 2 != 0;
+            }
+        );
+
+        let datosFiltrados4 = datos.filter ( num => num % 2 != 0 );
+
+        datos.every( num => num % 2 != 0 )
+
+        console.log (["hola", "adios", "pelota"].map(elto => elto.toUpperCase()));
+
+        console.log(["12", "15.3", "78"].map ( elto => Number(elto)));
+
+        datos.forEach( (elto,indice) => console.log("Índice" +  indice + "=>" + elto))
+
+
+    </script>
+    
+</body>
+</html>
