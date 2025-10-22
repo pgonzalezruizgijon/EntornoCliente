@@ -40,10 +40,10 @@ describe("Testeo de la función esBisiesto()", function(){
    expect( () => (esBisiesto()).toThrowError());
  }
 
- // Comprobar que la función lanza un error cuando la invocamos un año negativo
- it('La función debería lanzar una excepción cuando la invocamos con un año negativo'), () => {
-   expect( () => {esBisiesto(-10)}.toThrowError();
- }
+  // Comprobar que lanza excepción con año negativo
+  it('La función debería lanzar una excepción cuando la invocamos con un año negativo', () => {
+    expect(() => esBisiesto(-10)).toThrowError();
+  });
 
 
 
