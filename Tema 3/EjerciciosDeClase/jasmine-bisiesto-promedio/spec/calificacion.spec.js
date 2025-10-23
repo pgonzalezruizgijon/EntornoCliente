@@ -23,8 +23,22 @@ describe('Testeo de la función calificacion()', () => {
             ];
     // Comprobar que la función lanza una excepción si la invocamos sin argumento de entrada
     it('Debería lanzar una excepción si la invocamos sin argumentos de entrada', () => {
-        expect()
+        expect( () => verCalificacion()).toThrowError();
     });
+
+    // Invocamos la función con un argumento que no es de tipo numérico
+        it('Debería lanzar una excepción si el argumento no es de tipo numérico', () => {
+            expect( () => verCalificacion("hola")).toThrowError();
+        });
+
+    // Comprobar que la función devuelve un dato de tipo string para cualquier valor de entrada entre -1 y 11 con saltos de 0.5
+    it('La función deberia devolver datos string a cada valor de entrada', () => {
+        for (let i = -1; i <= 11; i+= 0.5) {
+            verCalificacion(i);
+            const resultado = verCalificacion(i);
+            expect( () => verCalificacion(i)).toBeInstanceOf(String);
+        }
+        });
 
 
 }); // Fin describe
