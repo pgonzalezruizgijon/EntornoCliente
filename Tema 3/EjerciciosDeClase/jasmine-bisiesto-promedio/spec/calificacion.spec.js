@@ -34,11 +34,18 @@ describe('Testeo de la función calificacion()', () => {
     // Comprobar que la función devuelve un dato de tipo string para cualquier valor de entrada entre -1 y 11 con saltos de 0.5
     it('La función deberia devolver datos string a cada valor de entrada', () => {
         for (let i = -1; i <= 11; i+= 0.5) {
-            verCalificacion(i);
             const resultado = verCalificacion(i);
-            expect( () => verCalificacion(i)).toBeInstanceOf(String);
+            expect(new String(resultado)).toBeInstanceOf(String);
         }
         });
+
+    // Realizar un testeo de caja negra con la siguiente estructura de datos:
+    datos.forEach(item => {
+        it(`Para la nota ${item.nota}, la calificación es ${item.valorEsperado}`, () => {
+            expect(verCalificacion(item.nota)).toBe(item.valorEsperado);
+        });
+
+    });
 
 
 }); // Fin describe
