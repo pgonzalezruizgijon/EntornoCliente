@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Clase Persona</title>
+</head>
+<body>
+
+    <script src="persona.js"></script>
+    <script>
+        const persona1 = new Persona("Juan", "Sánchez", 32);
+        const persona2 = new Persona("Ana", "Mateos", 20);
+        console.log(persona1.toString());
+        persona1.cumplirAños
+        console.log(persona1.toString());
+        // persona1._edad=-10;
+        try {
+            persona1.edad = -10;
+        } catch (error) {
+            console.log(error.message);
+        }
+
+        console.log(persona1);
+        console.log(persona1.nombre);
+        console.log(persona1.nombreCompleto);
+
+        console.log(persona2.nombre);
+        console.log(persona2.getNombre());
+
+        const personaConMasEdad = Persona.compararPersona(persona1,persona2);
+        console.log(personaConMasEdad.toString());
+
+        console.log(Persona.CROMOSOMA);
+
+
+    </script>
+    
+</body>
+</html>
