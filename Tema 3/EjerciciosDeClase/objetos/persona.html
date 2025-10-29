@@ -11,9 +11,9 @@
     <script>
         const persona1 = new Persona("Juan", "Sánchez", 32);
         const persona2 = new Persona("Ana", "Mateos", 20);
-        console.log(persona1.toString());
-        persona1.cumplirAños
-        console.log(persona1.toString());
+    console.log(persona1.toString());
+    persona1.cumplirAños();
+    console.log(persona1.toString());
         // persona1._edad=-10;
         try {
             persona1.edad = -10;
@@ -28,12 +28,17 @@
         console.log(persona2.nombre);
         console.log(persona2.getNombre());
 
-        const personaConMasEdad = Persona.compararPersona(persona1,persona2);
+    const personaConMasEdad = Persona.compararPersonas(persona1, persona2);
         console.log(personaConMasEdad.toString());
-
         console.log(Persona.CROMOSOMA);
 
+        const empleado1 = new Empleado("Ricardo", "Pérez García", 19, 2000);
+        const empleado2 = new Empleado("Antonio", "Benítez Gómez", 41, 1000);
 
+
+    console.log(empleado1.toString());
+    empleado1.cumplirAños();
+    console.log(empleado1.toString());
     </script>
     
 </body>

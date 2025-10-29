@@ -4,10 +4,10 @@ class Persona {
     _apellidos;
     _edad;
 
-    constructor(nombre, edad) {
-        this._nombre=nombre;
-        this._apellidos=this._apellidos;
-        this._edad=edad;
+    constructor(nombre, apellidos, edad) {
+        this._nombre = nombre;
+        this._apellidos = apellidos;
+        this._edad = edad;
     }
 
     // Propiedad estática (de clase)
@@ -24,26 +24,51 @@ class Persona {
     }
 
     toString() {
-        return `$(this._nombre) de $(this._edad) años`
+        return `${this._nombre} de ${this._edad} años`
     }
 
+    // método auxiliar
     getNombre(){
-        return this_nombre.toUpperCase();
+        return this._nombre.toUpperCase();
     }
 
+    // getter del nombre (propiedad)
     get nombre() {
-        return this_nombre.toUpperCase();
+        return this._nombre.toUpperCase();
     }
 
     get nombreCompleto() {
-        return `$(this._nombre) $(this.apellidos)`;
+        return `${this._nombre} ${this._apellidos}`;
+    }
+
+    get edad() {
+        return this._edad;
     }
 
     set edad(nuevaEdad){
-        if(nuevaEdad < 0) throw new Error("La edad debe ser un valor positivo")
-        this_edad=nuevaEdad;
+        if(nuevaEdad < 0) throw new Error("La edad debe ser un valor positivo");
+        this._edad = nuevaEdad;
     }
 }
 
-// const persona1 = new Persona("Juan", 32);
-// const persona2 = new Persona("Ana", 35);
+
+class Empleado extends Persona {
+    // Propiedades pseudointernas
+    // _nomre;
+    // _apellidos;
+    // _edad;
+    _sueldo;
+
+    constructor(nombre, apellidos, edad, sueldo) {
+        // this._nombre=nombre;
+        // this._apellidos=apellidos;
+        // this._edad=edad;
+        super(nombre, apellidos, edad); // Estamos invocando al constructor de la clase padre
+        this._sueldo = sueldo;
+    }
+
+    toString(){
+        return super.toString() + " y sueldo " + this._sueldo;
+    }
+
+}
