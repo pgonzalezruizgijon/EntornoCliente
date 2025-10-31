@@ -25,7 +25,7 @@ class Alumno extends Persona{
         
         // Solo formato "año/número"
         const partes = nuevoExpediente.split('/');
-        if (partes.length !==2 || partes[0].length !== 4) throw new error ('El formato debe ser "año/número", ej: 2024/43');
+        if (partes.length !==2 || partes[0].length !== 4) throw new Error ('El formato debe ser "año/número", ej: 2024/43');
 
         this._expediente = nuevoExpediente;
     }
@@ -50,6 +50,48 @@ class Alumno extends Persona{
         // Redondear a un decimal
         return Math.round(media * 10) / 10;
     }
+
+    // b. toString()
+    toString() {
+        const base = super.toString(); // LLamo al toString padre de la clase Persona
+
+        const notasTexto = this._notas.join(','); // Convierto el array de notas a texto
+
+        return `${base}, expediente ${this._expediente}, notas: ${notasTexto}, nota media: ${this.notaMedia()}`;
+    }
+
+    // c. añadirNota(nota) permitirá añadir una nota al alumno. Si la nota no es un número lanzará un error.
+    añadirNota(nota){
+        if (typeof nota !== 'number' || isNaN(nota)) {
+            throw new Error('La nota debe ser un número');
+        }
+        this._notas.push(nota);
+    }
+
+    // d. eliminarNota(posición) permite eliminar una nota en la posició indicada
+    //    (siendo 0 la primera nota). El método devolverá la nota eliminada del array. Si
+    //    no existe una nota en esa posición lanzar error.
+
+    eliminarNota(posicion) {
+        if (typeof posicion !== 'number' || isNaN(posicion)) {
+          throw new Error('La posición debe ser un número');
+        }
+    
+        if (posicion < 0 || posicion >= this._notas.length) {
+          throw new Error('No existe una nota en esa posición');
+        }
+    
+        const [eliminada] = this._notas.splice(posicion, 1);
+        return eliminada;
+    }
+
+    // E. Comparadores estáticos
+    // a. cmpNotaMedia(a1, a2): comparador para ordenar de mayor a menor por la nota media
+    static cmpNotaMedia(a1, a2) {
+        return a2.notaMedia - a1.notaMedia;
+    }
+
+
 
 
 
