@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Clase CuentaBancaria</title>
+</head>
+<body>
+    <script src="cuentaBancaria.js"></script>
+    <script>
+        // Creamos dos objetos CuentaBancaria a efectos de testeo
+         c1 = new CuentaBancaria("Román Pérez , María José ",
+        "ES18-12345678901234567890",250);
+         c2 = new CuentaBancaria("García López , Pedro ",
+        "ES64-09876543210987654321");
+        console.log("Getter titular => debería mostrar: 'Román Pérez , María José '");
+        console.log(c1.titular);
+        console.log("Getter cuenta => debería mostrar: 'ES18-12345678901234567890'");
+        console.log(c1.cuenta);
+        console.log("Getter saldo => debería mostrar: 250");
+        console.log(c1.saldo);
+        console.log("Getter nombrePila => debería mostrar: 'María José'");
+        console.log(c1.nombrePila);
+        console.log("Getter apellidos => debería mostrar: 'Román Pérez'");
+        console.log(c1.apellidos);
+        console.log("Getter iban => debería mostrar: 'ES18'");
+        console.log(c1.iban);
+        console.log("Método toString() => debería mostrar el nombre, la cuenta y el saldo");
+        console.log(c1.toString());
+        console.log("Ingresamos 70€ en la cuenta c1");
+        c1.ingresar(70);
+        console.log("El nuevo saldo de c1 debería ser 320€");
+        console.log(c1.saldo);// 250+70 => 320
+        console.log("Extraemos 15€ de la cuenta c1");
+        c1.extraer(15);
+        console.log("El nuevo saldo de c1 debería ser 305€");
+        console.log(c1.saldo);// 320-15 => 305
+        console.log("Intentamos extraer más saldo del que queda en la cuenta c1");
+        try {
+        c1.extraer(500);
+        } catch (error) {
+        console.log(error.message)
+        }
+        console.log("El saldo de c1 debería seguir siendo 305€");
+        console.log(c1.saldo);// 305
+        console.log("Intentamos ingresar menos de 5€ en la cuenta");
+        try {
+        c1.ingresar(5);
+        } catch (error) {
+        console.log(error.message)
+        }
+        console.log("El saldo de c1 debería seguir siendo 305€");
+        console.log(c1.saldo);// 305
+        console.log("Transferimos 120€ de la cuenta c1 a c2");
+        let nuevosSaldos=c1.transferir(c2,120);
+        console.log(nuevosSaldos);
+        console.log("El nuevo saldo de c1 debería ser 285€");
+        console.log(c1.saldo);// 285
+        console.log("El nuevo saldo de c2 debería ser 220€");
+        console.log(c2.saldo);// 220
+
+    </script>
+</body>
+</html>
