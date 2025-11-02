@@ -1,0 +1,2 @@
+Trabajo en clase: https://github.com/pgonzalezruizgijon/EntornoCliente/tree/main/Tema%203/EjerciciosDeClase/objetos
+Boletin 3 Tema 3: https://github.com/pgonzalezruizgijon/EntornoCliente/tree/main/Tema%203/Boletin_3_Tema_3
