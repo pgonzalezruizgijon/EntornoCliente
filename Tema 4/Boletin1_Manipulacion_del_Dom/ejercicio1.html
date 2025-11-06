@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Añadir párrafos</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+    #zona {
+      margin-top: 10px;
+      background-color: antiquewhite;
+      padding: 10px;
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Añadir párrafos dinámicamente</h2>
+
+  <label>Color: </label>
+  <input type="text" id="color" placeholder="Ej: red, blue, magenta...">
+
+  <br><br>
+
+  <input type="button" onclick="crearParrafo()" value="Crear párrafo mediante Element">
+  <input type="button" onclick="crearParrafoHTML()" value="Crear párrafo mediante HTML">
+
+  <div id="zona"></div>
+
+  <script>
+    let contador = 1;
+
+    // Crear párrafo mediante elementos del DOM
+    function crearParrafo() {
+      let color = document.getElementById("color").value || "black";
+      let zona = document.getElementById("zona");
+
+      let parrafo = document.createElement("p");
+      let texto = document.createTextNode(`Párrafo ${contador}`);
+      parrafo.appendChild(texto);
+      parrafo.style.color = color;
+      parrafo.style.fontSize = "16px";
+      zona.appendChild(parrafo);
+
+      contador++;
+    }
+
+    // Crear párrafo usando HTML directamente
+    function crearParrafoHTML() {
+      let color = document.getElementById("color").value || "black";
+      let zona = document.getElementById("zona");
+      let parrafoHTML = `<p style="color:${color}; font-size:16px;">Párrafo ${contador}</p>`;
+      zona.insertAdjacentHTML("beforeend", parrafoHTML);
+      contador++;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Primer parrafo</p>
+    <div>
+        <p>Párrafo 1</p>
+        <p>Párrafo 2</p>
+        <p>Párrafo 3</p>
+    </div>
+    <p>Último párrafo</p>
+
+    <script>
+        // Captura el evento onload para llamar a una funcion cuando se carga la página web
+        addEventListener("load", iniciar);
+
+        function iniciar(){
+            let parrafo3 = document.querySelectorAll("p")[2];
+            let parrafosDentroDiv = parrafo3.parentElement.children;
+            for (let i = 0; i < parrafosDentroDiv.length; i++) {
+                parrafosDentroDiv[i].style.color="red";
+            }
+        }
+    </script>
+</body>
+</html>

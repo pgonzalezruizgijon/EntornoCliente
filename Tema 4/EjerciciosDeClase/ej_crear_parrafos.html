@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: antiquewhite;
+            width: 200px;
+            height: 200px;
+        }
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p class="warning">Primer párrafo</p>
+    <p>Segundo párrafo</p>
+    <p class="warning">Tercer párrafo</p>
+    <div class="warning"></div>
+    <div id="zona">
+        
+    </div>
+    <label for="radio1">Rojo</label>
+    <input type="radio" name="color" id="radio1">
+    <label for="radio1">Verde</label>
+    <input type="radio" name="color" id="radio1">
+    <label for="radio1">Azul</label>
+    <input type="radio" name="color" id="radio1">
+    <br>
+    <input type="button" onclick="crearParrafo()" value="Crear párrafo">
+    <input type="button" value="Crear párrafo mediante HTML" onclick="crearParrafoHTML()">
+    <script>
+        let contador = 1;
+        function crearParrafo(){
+            let parrafo = document.createElement("p"); // Esto crea un objeto párrafo en memoria
+            let nodoTexto = document.createTextNode(`Párrafo ${contador}`); // Esto es un obketo en memoria
+            parrafo.appendChild(nodoTexto); // Añadir un nodo de texto al objeto párrafo
+            parrafo.id="parrafo"+contador;
+            parrafo.style.color = "red"; // <p style="color:red>">Párrafo 1 </p>
+            parrafo.style.fontSize="16px";
+            let zona = document.getElementById("zona");
+            zona.appendChild(parrafo); // Añadimos el párrafo al div
+
+            contador++;
+
+        }
+
+        function crearParrafoHTML() {
+            let parrafoStr=`<p id="parrafo${contador} style="color:red; font-size:16px"> Párrafo ${contador}</p>`;
+            let zona = document.getElementById("zona");
+            zona.insertAdjacentHTML("beforeend", parrafoStr);
+            contador++;
+        }
+    </script>
+</body>
+</html>
