@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+    div {
+      margin-bottom: 10px;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Modificar estilos de párrafos</h2>
+
+  <div id="textos">
+    <p id="p1">Párrafo 1</p>
+    <p id="p2">Párrafo 2</p>
+    <p id="p3">Párrafo 3</p>
+  </div>
+
+  <label>Seleccionar párrafo: </label>
+  <select id="selParrafo">
+    <option value="p1">Párrafo 1</option>
+    <option value="p2">Párrafo 2</option>
+    <option value="p3">Párrafo 3</option>
+  </select>
+
+  <label>Tamaño: </label>
+  <select id="selTamaño">
+    <option value="small">small</option>
+    <option value="medium">medium</option>
+    <option value="large">large</option>
+  </select>
+
+  <label>Color: </label>
+  <select id="selColor">
+    <option value="red">Rojo</option>
+    <option value="green">Verde</option>
+    <option value="blue">Azul</option>
+  </select>
+
+  <label>Visibilidad: </label>
+  <select id="selVisibilidad">
+    <option value="visible">visible</option>
+    <option value="hidden">hidden</option>
+  </select>
+
+  <label>Display: </label>
+  <select id="selDisplay">
+    <option value="inline">inline</option>
+    <option value="none">none</option>
+  </select>
+
+  <input type="button" value="Aplicar estilos" onclick="aplicarEstilos()">
+
+  <script>
+    function aplicarEstilos() {
+      let id = document.getElementById("selParrafo").value;
+      let tamaño = document.getElementById("selTamaño").value;
+      let color = document.getElementById("selColor").value;
+      let visibilidad = document.getElementById("selVisibilidad").value;
+      let display = document.getElementById("selDisplay").value;
+
+      let parrafo = document.getElementById(id);
+
+      parrafo.style.fontSize = tamaño;
+      parrafo.style.color = color;
+      parrafo.style.visibility = visibilidad;
+      parrafo.style.display = display;
+    }
+  </script>
+</body>
+</html>
