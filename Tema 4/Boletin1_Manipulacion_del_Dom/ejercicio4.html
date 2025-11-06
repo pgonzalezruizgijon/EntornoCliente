@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 4</title>
+</head>
+<body>
+  <div>
+    <h3>Div 1</h3>
+    <p>Párrafo dentro de div 1.</p>
+  </div>
+
+  <div>
+    <h3>Div 2</h3>
+    <p>Párrafo dentro de div 2.</p>
+  </div>
+
+  <p>Haz clic para cambiar el color de fondo de todos los párrafos dentro de un div.</p>
+
+  <input type="button" value="Cambiar color a todos" onclick="cambiarTodos()">
+
+  <script>
+    function cambiarTodos() {
+      // Selecciona todos los párrafos que sean hijos directos de un div
+      let parrafos = document.querySelectorAll("div > p");
+      for (let i = 0; i < parrafos.length; i++) {
+        parrafos[i].style.backgroundColor = "lightgreen";
+      }
+    }
+  </script>
+</body>
+</html>
