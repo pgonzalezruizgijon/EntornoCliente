@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class Persona{
+        _nombre;
+        _edad;
+
+        constructor(nombre,edad){
+            this._nombre = nombre;
+            this._edad = edad;
+        }
+
+        toString() {
+            return `Nombre: ${this._nombre} edad: ${this._edad}`
+        }
+
+        static cmpEdad(o1,o2){
+            return o1.edad - o2.edad; 
+        }
+
+        static cmpNombre(o1,o2){
+            return o1.nombre.localeCompare(o2.nombre);
+        }
+    }
+    
+    let persona1 = new Persona("Juan",30)
+    let persona2 = new Persona("Maria",20)
+    let persona3 = new Persona("Antonio",21)
+    let persona4 = new Persona("Pepe",26)
+
+    let arrayPersona = [persona1,persona2,persona3,persona4];
+
+    console.log("Sin ordenar");
+    console.log(arrayPersona)
+    console.log("Ordeanr por edad")
+    
+    cmpEdad();
+    
+    </script>
+</body>
+</html>

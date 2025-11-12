@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="contenedor"></div>
+    <input type="button" value="Crear párrafo" onclick="crearParrafo()">
+    <script>
+        let contador = 1;
+        function crearParrafo() {
+
+            let nuevoParrafo = document.createElement("p");
+            nuevoParrafo.textContent = "Párrafo" + contador;
+            //  Vamos a añadir un evento de manera dinámica
+            nuevoParrafo.addEventListener("click", clickEnParrafo);
+            document.querySelector("#contenedor").appendChild(nuevoParrafo)
+            contador++;
+        }
+
+        // Manejador de eventos compartido
+        function clickEnParrafo(evt){
+            let elemento=evt.target;
+            alert("Has pulsado en un párrafo" + elemento.id);
+        }
+
+    </script>
+    
+</body>
+</html>
