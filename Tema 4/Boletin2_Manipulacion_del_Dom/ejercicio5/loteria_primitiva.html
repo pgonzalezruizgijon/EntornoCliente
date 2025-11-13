@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .forma1 {
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem;
+            color: white;
+            background-color: red;
+            border-radius: 1rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+        }
+
+        .forma2 {
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem;
+            color: black;
+            background-color: white;
+            border-radius: 1rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+        }
+    </style>
+    <script src="loteria_primitiva.js" refer></script>
+</head>
+<body>
+    <h1>Combinación ganadora</h1>
+    <input type="button" id="botonGenerar" onclick="iniciar();" value="Generar combinación">
+    <table id="loteriatable"></table>
+</body>
+</html>
