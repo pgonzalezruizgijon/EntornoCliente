@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 80%;
+			margin: 20px auto;
+			font-family: Arial, sans-serif;
+			table-layout: fixed;
+		}
+
+		th,
+		td {
+			border: 1px solid #999;
+			padding: 8px 12px;
+			text-align: left;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		tr:nth-child(even) {
+			background-color: #fafafa;
+		}
+
+		input[type=button]{
+			margin: 0 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Tabla dinámica</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Elemento</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+		 <!-- Aquí va el nuevo contenido-->
+		</tbody>
+	</table>
+	<h2>Nuevo contenido</h2>
+	<label for="txtCaja">Texto</label>
+	<input type="text" id="txtCaja">
+	<input type="button" onclick="insertarFila();" value="Insertar fila"><br><br>
+	<label for="input-fila1">Fila 1:</label>
+	<input type="number" name="" id="input-fila1" value="1">
+	<label for="input-fila2">Fila 2:</label>
+	<input type="number" name="" id="input-fila2" value="2">
+	<input type="button" onclick="intercambiarFilas();" value="Intercambiar filas">
+	<script src="tabla_dinamica.js"></script>
+</body>
+
+</html>
