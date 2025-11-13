@@ -1,0 +1,2 @@
+Url Boletín 2: https://github.com/pgonzalezruizgijon/EntornoCliente/tree/main/Tema%204/Boletin2_Manipulacion_del_Dom
+Url ejercicios de clase: https://github.com/pgonzalezruizgijon/EntornoCliente/tree/main/Tema%204/EjerciciosDeClase
