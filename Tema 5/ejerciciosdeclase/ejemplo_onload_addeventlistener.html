@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+
+        // Manejador de eventos
+        function iniciar() {
+            alert("Se ha cargado la página web")
+            document.querySelector("#contenido").textContent="Hola";
+            // Añadimos el manejador de eventos del botón
+            let boton = document.querySelector("input[type=button]");
+            // boton.addEventListener("click", decirHola);
+            // boton.onclick = decirHola;
+            // boton.onclick = function(){alert("Hola mundo")};
+            boton.onclick = () => alert("Hola mundo!");
+        }
+
+        // Manejador de eventos del botón
+        function decirHola() {
+            alert("Hola");
+        }
+
+        addEventListener("load", iniciar)
+    </script>
+    <input type="button" value="Pulsar">
+    <div id="contenido"></div>
+</body>
+
+</html>

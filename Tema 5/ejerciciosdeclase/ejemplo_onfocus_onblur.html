@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejemplo de eventos onfocus y onblur</h1>
+    <script>
+        function iniciar() {
+            let cuadrotexto = document.querySelector("#txtnombre");
+            cuadrotexto.addEventListener("focus", ganarFoco);
+            cuadrotexto.onblur = perderFoco;
+            cuadrotexto.oninput = cambioContenido;
+        }
+
+        function cambioContenido() {
+            console.log("Cambio en el cuadro de texto")
+        }
+
+        function ganarFoco(){
+            console.log("Cuadro de texto gana foco")
+        }
+        function perderFoco() {
+            console.log("Cuadro de texto pierde foco")
+        }
+
+        addEventListener("load", iniciar);
+
+    </script>
+    <!-- <input type="text" onfocus="ganarFoco()" onblur="perderFoco()" name="" id="txtnombre"> -->
+     <input type="text" id="txtnombre">
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 300px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejemplo onmouseover y onmouse seout</h1>
+    
+    <script>
+        function iniciar() {
+            let contenedor = document.querySelector("#contenedor");
+            contenedor.addEventListener("mouseover", entrarDiv);
+            contenedor.addEventListener("mouseout", salirDiv);
+        }
+            
+        function entrarDiv(evt){
+            console.log("Ratón ha entrado en zona del div");
+            let eltoHTML = evt.target; // Tenemos una referencia al elemento que ha disparado 
+            eltoHTML.style.backgroundColor="yellow";
+        }
+
+        function salirDiv(evt) {
+            console.log("Ratón ha salido de zona del div");
+            let eltoHTML = evt.target;
+            eltoHTML.style.backgroundColor="orange";
+        }
+
+        addEventListener("load", iniciar);
+        
+    </script>
+
+    <div id="contenedor"></div>
+</body>
+</html>
