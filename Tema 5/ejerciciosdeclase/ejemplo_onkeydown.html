@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejemplo evento onkeydown</h1>
+    <input type="text" name="" id="txtnombre">
+    <script>
+        function iniciar(){
+            // document.querySelector("#txtnombre").addEventListener("keydown", pulsarTecla);
+            window.addEventListener("keydown",pulsarTecla); // capturamos el evento a nivel global de la página web
+        }
+        function pulsarTecla(evt){
+            let codigoTecla = evt.keyCode;
+            console.log(`Has pulsado una tecla con código ${codigoTecla}`);
+        }
+
+        addEventListener("load", iniciar);
+    </script>
+</body>
+</html>

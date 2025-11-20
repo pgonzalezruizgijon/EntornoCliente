@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        #contenedor{
+            width: 300px;
+            height: 200px;
+            background-color: aquamarine;
+        }
+    </style>
+<body>
+    <h1>Ejemplo evento onmousemove</h1>
+    <div id="contenedor"></div>
+    <div id="coordenadas"></div>
+    <script>
+        function iniciar(){
+            document.querySelector("#contenedor").addEventListener("mousemove", moverRaton);
+        }
+
+        function moverRaton(evt){
+            let coordenadaX = evt.clientX;
+            let coordenadaY = evt.clientY;
+            console.log(`Evento onmousemove. x=${coordenadaX} y=${coordenadaY}`);
+            document.querySelector("#coordenadas").textContent=`x=${coordenadaX} y=${coordenadaY}`;
+        }
+        addEventListener("load", iniciar);
+    </script>
+</body>
+</html>

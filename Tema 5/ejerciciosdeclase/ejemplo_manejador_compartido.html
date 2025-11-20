@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        p{
+            padding: 10px;
+            display: inline;
+        }
+    </style>
+    <h1>Ejemplo manejador de eventos compartido</h1>
+    <div id="contenedor"></div>
+    <input type="button" id="btncrearparrafo" value="Crear párrafo">
+    <script>
+        let contador = 1;
+        function iniciar(){
+            document.querySelector("#btncrearparrafo").addEventListener("click", crearParrafo);
+        }
+        function crearParrafo(){
+            let parrafo = document.createElement("p");
+            parrafo.id = "parrafo"+contador;
+            parrafo.textContent = `Párrafo nº ${contador}`;
+            parrafo.addEventListener("click", clickEnParrafo);
+            parrafo.addEventListener("mouseover", clickEnParrafo);
+            parrafo.addEventListener("mouseout", clickEnParrafo);
+            document.querySelector("#contenedor").appendChild(parrafo);
+            contador++;
+        }
+
+        // Manejador de eventos compartido
+        function clickEnParrafo(evt) {
+            let eltoHTML = evt.target; // Tenemos una referencia al párrafo que ha disparado el evento
+            let tipoEvento = evt.type; // Type nos devuelve el tipo de evento (click, mouseover, etc...)
+            console.log(`Evento ${tipoEvento} en el párrafo ${eltoHTML.id}`);
+            eltoHTML.style.color="magenta";
+        }
+
+        addEventListener("load", iniciar);
+    </script>
+</body>
+</html>
