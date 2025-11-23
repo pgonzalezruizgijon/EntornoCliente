@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>68 - change</title></head>
+<body>
+  <label>
+    <input type="checkbox" id="terms"> ¿Confirma los términos y condiciones?
+  </label>
+  <br><br>
+  <button id="confirm" disabled>Confirmar</button>
+
+  <script>
+    const terms = document.getElementById('terms');
+    const btn = document.getElementById('confirm');
+    terms.addEventListener('change', () => {
+      btn.disabled = !terms.checked;
+    });
+  </script>
+  
+</body>
+</html>

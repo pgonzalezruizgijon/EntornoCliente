@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>71 - submit & preventDefault</title></head>
+<body>
+  <form id="f">
+    <input name="nombre" placeholder="Nombre">
+    <button type="submit">Enviar</button>
+  </form>
+  <script>
+    const f = document.getElementById('f');
+    f.addEventListener('submit', function(e) {
+      e.preventDefault(); // evita el envío/recarga
+      alert('Envio detenido con preventDefault. Aquí podrías validar y enviar por AJAX.');
+      // e es el objeto Event; preventDefault() es su método
+    });
+  </script>
+  
+</body>
+</html>

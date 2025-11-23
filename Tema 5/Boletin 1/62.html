@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>62 - load vs DOMContentLoaded</title></head>
+<body>
+  <img src="https://via.placeholder.com/600x200" alt="img grande para simular carga">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded: DOM construido (sin esperar recursos).');
+    });
+    window.addEventListener('load', () => {
+      console.log('load: todo recurso (imágenes, css...) cargado.');
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>65 - mouseover/mouseout</title></head>
+<body>
+  <h1 id="titulo">Pasa el ratón por aquí</h1>
+
+  <script>
+    const h1 = document.getElementById('titulo');
+    const original = { color: h1.style.color, background: h1.style.background };
+    h1.addEventListener('mouseover', () => {
+      h1.style.color = 'red';
+      h1.style.background = 'yellow';
+    });
+    h1.addEventListener('mouseout', () => {
+      h1.style.color = original.color;
+      h1.style.background = original.background;
+    });
+  </script>
+  
+</body>
+</html>

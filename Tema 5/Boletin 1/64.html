@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>64 - mousedown/mouseup</title>
+<style> #caja { width:200px; height:100px; background:red; }</style>
+</head>
+<body>
+  <div id="caja"></div>
+
+  <script>
+    const caja = document.getElementById('caja');
+    caja.addEventListener('mousedown', (e) => {
+      if (e.button === 0) caja.style.background = 'yellow'; // botón izquierdo
+    });
+    caja.addEventListener('mouseup', () => {
+      caja.style.background = 'red';
+    });
+    // para el caso de soltar fuera:
+    document.addEventListener('mouseup', () => caja.style.background = 'red');
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>69 - focus/blur</title></head>
+<body>
+  <input id="campo" placeholder="Foco y blur">
+  <script>
+    const campo = document.getElementById('campo');
+    campo.addEventListener('focus', () => campo.style.boxShadow = '0 0 5px #3b82f6');
+    campo.addEventListener('blur', () => campo.style.boxShadow = '');
+  </script>
+  
+</body>
+</html>

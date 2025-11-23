@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>66 - mousemove</title>
+<style>#area{ width:400px;height:200px;border:1px solid black; }</style>
+</head>
+<body>
+  <div id="area">Mueve el ratón aquí<br><span id="coords"></span></div>
+
+  <script>
+    const area = document.getElementById('area');
+    const coords = document.getElementById('coords');
+    area.addEventListener('mousemove', (e) => {
+      const rect = area.getBoundingClientRect();
+      const x = Math.round(e.clientX - rect.left);
+      const y = Math.round(e.clientY - rect.top);
+      coords.textContent = `x: ${x}, y: ${y}`;
+    });
+    area.addEventListener('mouseout', () => coords.textContent = '');
+  </script>
+  
+</body>
+</html>

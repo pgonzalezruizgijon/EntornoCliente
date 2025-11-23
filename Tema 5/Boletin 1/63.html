@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>63 - dblclick</title>
+<style> #num { padding: 20px; border:1px solid #000; display:inline-block; }</style>
+</head>
+<body>
+  <div id="num">2</div>
+
+  <script>
+    const numDiv = document.getElementById('num');
+    numDiv.addEventListener('dblclick', () => {
+      const n = Number(numDiv.textContent) || 0;
+      numDiv.textContent = n * 2;
+    });
+  </script>
+  
+</body>
+</html>

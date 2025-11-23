@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>67 - keydown/keyup</title></head>
+<body>
+  <input id="campo" placeholder="Pulsa teclas aquí">
+  <p>keydown: <span id="kd"></span></p>
+  <p>keyup: <span id="ku"></span></p>
+
+  <script>
+    const campo = document.getElementById('campo');
+    document.getElementById('kd').textContent = '';
+    document.getElementById('ku').textContent = '';
+
+    campo.addEventListener('keydown', (e) => {
+      document.getElementById('kd').textContent = `${e.key} (code: ${e.code})`;
+    });
+    campo.addEventListener('keyup', (e) => {
+      document.getElementById('ku').textContent = `${e.key} (code: ${e.code})`;
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>70 - TaTeTi</title>
+<style>
+  #board { display: grid; grid-template-columns: repeat(3, 80px); gap: 5px; }
+  button.cell { width:80px;height:80px;font-size:32px; }
+</style>
+</head>
+<body>
+  <h2>TaTeTi</h2>
+  <div id="board">
+    <!-- 9 botones con data-index -->
+    <button class="cell" data-i="0"></button>
+    <button class="cell" data-i="1"></button>
+    <button class="cell" data-i="2"></button>
+    <button class="cell" data-i="3"></button>
+    <button class="cell" data-i="4"></button>
+    <button class="cell" data-i="5"></button>
+    <button class="cell" data-i="6"></button>
+    <button class="cell" data-i="7"></button>
+    <button class="cell" data-i="8"></button>
+  </div>
+  <p id="status">Turno: X</p>
+  <button id="reset">Reiniciar</button>
+
+  <script>
+    const cells = Array.from(document.querySelectorAll('.cell'));
+    const status = document.getElementById('status');
+    const reset = document.getElementById('reset');
+    let board = Array(9).fill(null);
+    let turn = 'X';
+    let finished = false;
+
+    function checkWinner(b) {
+      const wins = [
+        [0,1,2],[3,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6]
+      ];
+      for (let combo of wins) {
+        const [a,b1,c] = combo;
+        if (b[a] && b[a] === b[b1] && b[a] === b[c]) return b[a];
+      }
+      return b.includes(null) ? null : 'draw';
+    }
+
+    function onCellClick(e) {
+      if (finished) return;
+      const btn = e.currentTarget;
+      const idx = Number(btn.dataset.i);
+      if (board[idx]) return; // ya jugado
+      board[idx] = turn;
+      btn.textContent = turn;
+      const result = checkWinner(board);
+      if (result === 'X' || result === 'O') {
+        status.textContent = `¡Gana ${result}!`;
+        finished = true;
+        // opcional: resaltar combinación ganadora (no implementado aquí)
+      } else if (result === 'draw') {
+        status.textContent = 'Empate.';
+        finished = true;
+      } else {
+        turn = (turn === 'X') ? 'O' : 'X';
+        status.textContent = `Turno: ${turn}`;
+      }
+    }
+
+    // asociar el mismo handler a los 9 botones
+    cells.forEach(c => c.addEventListener('click', onCellClick));
+
+    reset.addEventListener('click', () => {
+      board.fill(null);
+      cells.forEach(c => c.textContent = '');
+      turn = 'X';
+      finished = false;
+      status.textContent = 'Turno: X';
+    });
+  </script>
+  
+</body>
+</html>

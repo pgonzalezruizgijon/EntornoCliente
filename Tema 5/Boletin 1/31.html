@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>31 - onBlur</title></head>
+<body>
+  <form>
+    <label>Usuario: <input type="text" id="usuario"></label><br><br>
+    <label>Clave: <input type="password" id="clave"></label>
+  </form>
+
+  <script>
+    const clave = document.getElementById('clave');
+    clave.addEventListener('blur', () => {
+      const len = clave.value.length;
+      if (len > 0 && (len < 7 || len > 20)) {
+        alert('La clave debe tener entre 7 y 20 caracteres.');
+      }
+    });
+  </script>
+</body>
+</html>
