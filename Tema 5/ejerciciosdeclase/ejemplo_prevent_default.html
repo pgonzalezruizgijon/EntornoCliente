@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejemplo de preventDefault</h1>
+    <a href="https://iesruizgijon.es/">IES Ruiz Gijón</a>
+
+    <form action="https://iesruizgijon.es/" method="post">
+        <label for="txt-nombre">Nombre</label>
+        <input type="text" name="Nombre" id="txt-nombre">
+        <label for="txt-email">Email</label>
+        <input type="email" name="Correo" id="txt-email">
+        <input type="submit" value="Enviar">
+    </form>
+
+<script>
+        function iniciar(){
+            document.querySelector("a").addEventListener("click", clicHiperenlace);
+            document.querySelector("form").addEventListener("submit", submitFormulario);
+        }
+
+        // manejador de eventos del formulario
+        function submitFormulario(evt) {
+            let nombre = document.querySelector("#txt-nombre").value;
+            alert("nombre = "+nombre);
+            evt.preventDefault();
+
+        }
+
+        // manejador eventos hiperenlace
+        function clicHiperenlace(evt){
+            let href = evt.target.href;
+            // let href = evt.targe.getAttribute("href");
+            alert("href = "+href);
+
+            // cambiar el efecto del click en el hiperenlace
+            evt.preventDefault();
+
+        }
+
+        addEventListener("load", iniciar);
+
+    </script>
+</body>
+</html>

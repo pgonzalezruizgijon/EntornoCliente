@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejemplo de evento input</h1>
+
+<input type="text" name="" id="txt-nombre">
+
+<script>
+
+function iniciar() {
+    document.querySelector("#txt-nombre").addEventListener("input", entradaCuadroTexto);
+    document.querySelector("#txt-nombre").addEventListener("change", entradaCuadroTexto);
+}
+
+function entradaCuadroTexto(evt) {
+    let tipoEvento = evt.type;
+    console.log("Dispara evento "+tipoEvento + "Se añade: " + evt.target.value);
+}
+addEventListener("load", iniciar);
+</script>
+
+</body>
+</html>
