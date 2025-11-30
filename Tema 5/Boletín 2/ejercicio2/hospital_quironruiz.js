@@ -8,7 +8,6 @@ let SEGUROS_MEDICOS = [
 ];
 
 
-
     // Poblar seguro médico
 
 window.onload = function () {
