@@ -1,0 +1,2 @@
+Ejercicios de clase: https://github.com/pgonzalezruizgijon/EntornoCliente/tree/main/Tema%205/ejerciciosdeclase
+Ejercicios boletin 2: https://github.com/pgonzalezruizgijon/EntornoCliente/tree/main/Tema%205/Bolet%C3%ADn%202
