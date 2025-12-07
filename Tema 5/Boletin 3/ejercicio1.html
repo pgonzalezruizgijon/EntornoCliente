@@ -1,0 +1,97 @@
+<!-- Apartado 1 -->
+<!-- Crea una función llamada validaCP que valide si un código postal es válido, retornando true en caso afirmativo. El código postal podrá tener 
+opcionalmente espacios por delante o por detrás. Haz un testeo de la función. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+<!-- Apartado 1 -->
+    <h2>1. ValidaCP</h2>
+    
+    <form id="formvalidaCP" onsubmit="return validaCP()">
+        <label>Código Postal: </label>
+        <input type="text" name="cp" id="cp">
+        <input type="submit" value="Validar"><br><br>
+
+    </form>
+    
+    <script>
+
+        function validaCP() {
+
+            let cp = document.getElementById('cp').value;
+            let patron = /^\s*\d{5}\s*$/;
+
+            let esValido = patron.test(cp);
+            console.log (esValido); // Devuelve true si es correcto y false si es falso por consola
+
+            return false;
+        }
+
+
+    </script>
+
+<!-- Apartado 2 -->
+<!-- Crea una función llamada extraeCPs que tenga como argumento de entrada una frase que contenga códigos postales. La función 
+debe devolver un array con todos los códigos postales encontrados. Haz un testeo de la función. -->
+    <h2>2. ExtraeCPs</h2>
+
+    <form id="formextraeCPs" onsubmit="return extraeCPs()">
+
+        <label>Frase que contenga códigos postales:</label>
+        <input type="text" name="frasecp" id="frasecp">
+        <input type="submit" value="Validar"> <br><br>
+
+    </form>
+
+    <script>
+
+        function extraeCPs() {
+            let frasecp = document.getElementById('frasecp').value;
+            let patron = /\b\d{5}\b/g;
+
+            let cpEncontrados = frasecp.match(patron) || [] ;
+
+            console.log(cpEncontrados);
+
+            return false;
+        }
+
+    </script>
+
+<!-- Apartado 3 -->
+<!-- Crea una función llamada sustituyeCPs que tenga como argumento de entrada una frase que contenga códigos postales. La función 
+debe devolver la frase de entrada sustituyendo todos los códigos postales por la palabra C.P. Haz un testeo de la función. -->
+    <h2>3. SustituyeCPs</h2>
+
+    <form id="formsustituyeCPs" onsubmit="return sustituyeCPs()">
+
+        <label>Frase que contenga códigos postales:</label>
+        <input type="text" name="frasecp2" id="frasecp2">
+        <input type="submit" value="Reemplazar">
+
+    </form>
+
+    <script>
+
+        function sustituyeCPs() {
+            let frasecp2 = document.getElementById('frasecp2').value;
+            let patron = /\b\d{5}\b/g;
+
+            let cpReemplazar = frasecp2.replace(patron, "C.P");
+
+            console.log(cpReemplazar);
+
+            return false;
+        }
+
+    </script>
+
+
+</body>
+</html>
