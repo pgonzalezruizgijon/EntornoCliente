@@ -1,0 +1,33 @@
+<!-- Crea una función llamada extraerPosicionesEmails que tenga como argumento de entrada un texto (dato string) 
+y devuelva un vector con todas las posiciones en que se haya encontrado un emails en el texto de entrada.
+
+Para validar un email utiliza la siguiente expresión regular:
+/\w+@([a-zA-Z_]+\.)+[a-zA-Z]{2,6}/
+Haz un testeo de la función.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+
+<script>
+    function extraerPosicionesEmails(texto) {
+        let patron = /\w+@([a-zA-Z_]+\.)+[a-zA-Z]{2,6}/g;
+        let posiciones = [];
+        let match;
+        while ((match = patron.exec(texto)) !== null) {
+            posiciones.push(match.index);
+        }
+        return posiciones;
+    }
+
+    let texto = "Contactos: juan@mail.com, info@empresa.org y admin@dominio.es";
+    console.log(extraerPosicionesEmails(texto)); // [10, 27, 45]
+</script>
+
+</body>
+</html>
