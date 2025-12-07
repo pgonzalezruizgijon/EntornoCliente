@@ -1,0 +1,29 @@
+<!-- Crea una función llamada terminaVocalAcentuada que valide si una palabra termina en vocal acentuada,
+sin distinguir mayúsculas de minúsculas.  Haz un testeo de la función. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function terminaVocalAcenturada(palabra) {
+            
+            let patron = /[áéíóú]$/i;
+            return patron.test(palabra);
+
+        }
+
+        console.log(terminaVocalAcenturada("jabalí"));
+        console.log(terminaVocalAcenturada("llave"));
+        console.log(terminaVocalAcenturada("JabalÍ"));
+
+    </script>
+    
+</body>
+</html>
