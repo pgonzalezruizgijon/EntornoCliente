@@ -1,0 +1,26 @@
+<!-- Crea una función llamada validaHora que valide si un string que representa una hora con el formato hh:mm:ss 
+usando la representación de  24 horas.  Haz un testeo de la función. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+
+<script>
+    function validaHora(hora) {
+        let patron = /^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/;
+        return patron.test(hora);
+    }
+
+    console.log(validaHora("12:30:45")); // true
+    console.log(validaHora("23:59:59")); // true
+    console.log(validaHora("00:00:00")); // true
+    console.log(validaHora("24:00:00")); // false
+    console.log(validaHora("12:60:00")); // false
+</script>
+
+</body>
+</html>
