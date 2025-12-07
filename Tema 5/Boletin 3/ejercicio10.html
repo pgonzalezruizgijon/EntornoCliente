@@ -1,0 +1,32 @@
+<!-- Crea una función llamada extraeExpresionesMatemáticas que use como argumento de entrada un string que contendrá entre 
+llaves expresiones matemáticas. La función debe devolver un array que contenga las expresiones matemáticas.
+Por ejemplo, si le pasamos a la función la siguiente cadena de caracteres:
+
+“La ecuación de una recta es {y=a*x + b}, la de un círculo {x^2+y^2 = r} y la de la parábola {y = x^2}” 
+la función debe devolver el array: [{y=a*x + b}, {x^2+y^2 = r}, {y = x^2}]
+
+Observación: para resolver este ejercicio debes usar cuantificadores de tipo lazy
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+
+<script>
+    function extraeExpresionesMatematicas(texto) {
+        // Usamos lazy quantifier .*? para capturar el mínimo hasta la primera llave de cierre
+        let patron = /\{.*?\}/g;
+        return texto.match(patron) || [];
+    }
+
+    let cadena = "La ecuación de una recta es {y=a*x + b}, la de un círculo {x^2+y^2 = r} y la de la parábola {y = x^2}";
+    console.log(extraeExpresionesMatematicas(cadena));
+    // ["{y=a*x + b}", "{x^2+y^2 = r}", "{y = x^2}"]
+</script>
+
+</body>
+</html>

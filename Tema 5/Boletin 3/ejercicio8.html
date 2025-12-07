@@ -1,0 +1,27 @@
+<!-- Crea una función llamada validaDireccionIP que valide si un string que representa una dirección IP tiene un formato correcto.
+La función debe devolver true o false.  Haz un testeo de la función. Realiza un testeo con Jasmine de al menos 5 direcciones IPs 
+válidas y otras 5 que no lo sean (Ej: “192.168.16.20”  => Son cuatro bytes en formato decimal (0-255) separados por un punto) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+
+<script>
+    function validaDireccionIP(ip) {
+        let patron = /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/;
+        return patron.test(ip);
+    }
+
+    let ipsValidas = ["192.168.1.1", "0.0.0.0", "255.255.255.255", "10.0.0.5", "172.16.0.1"];
+    let ipsInvalidas = ["256.100.50.25", "192.168.1", "192.168.1.999", "123.456.78.90", "192.168..1"];
+
+    ipsValidas.forEach(ip => console.log(ip, validaDireccionIP(ip))); // true
+    ipsInvalidas.forEach(ip => console.log(ip, validaDireccionIP(ip))); // false
+</script>
+
+</body>
+</html>
