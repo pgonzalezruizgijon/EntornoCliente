@@ -1,0 +1,30 @@
+<!-- Crea una función llamada validaDNI que tendrá como argumento el DNI que se desea validar. Un DNI tiene una 
+estructura correcta si consta de 8 dígitos, un guión opcional y una de las siguientes letras: trwagmyfpdxbnjzsqvhlcke 
+(la letra podrá estar en minúsculas o mayúsculas). Haz un testeo de la función. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    
+    <script>
+
+        function validaDNI(dni) {
+            let patronDNI=/^\d{8}-?[trwagmyfpdxbnjzsqvhlcke]$/i;
+            return patronDNI.test(dni);
+        }
+
+        console.log(validaDNI("12345678Z")); // true
+        console.log(validaDNI("1234567Z"));  // false (7 dígitos)
+        console.log(validaDNI("123456789Z")); // false (9 dígitos)
+        console.log(validaDNI("12345678-z")); // true
+        console.log(validaDNI("12345678--Z")); // false (doble guion)
+
+    </script>
+
+</body>
+</html>
