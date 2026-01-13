@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ejemplo de código Síncrono vs Ansíncrono</h1>
+    <h2>Pulsa F12 para ver consola de depuración</h2>
+    <input type="button" onclick="ejecucionSincrona()" value="Síncrono">
+    <input type="button" onclick="ejecucionAsincrona()" value="Asíncrono">
+
+    <script>
+
+        //  ********************   EJECUCIÓN SÍNCRONA  *********************************
+        function calculoComplejoSincrono(numero) {
+            // Vamos simular un tiempo de cálculo prolognado mediante un retraso síncrono de 5sg
+            let final = Date.now() + 5000;
+            while (Date.now() < final) { } // Introduce un retraso síncrono
+            console.log(`Resultado => ${Math.sqrt(numero)}`);
+        }
+
+        function ejecucionSincrona() {
+            console.log("Antes de llamar a la función síncrona");
+            calculoComplejoSincrono(81); // LLAMADA SÍNCRONA (SE BLOQUEA EJECUCIÓN DEL RESTO DEL CÓDIGO)
+            console.log("Después de llamar a la función síncrona");
+        }
+        //  ****************************************************************************
+
+
+        //  ********************   EJECUCIÓN ASÍNCRONA  *********************************
+        // cb es el callback (una función que invocaremos cuando finalice el cálculo)
+        function calculoComplejoAsincrono(numero,cb) {
+            // Vamos simular un tiempo de cálculo prolongado de 5sgmediante un retraso asíncrono de 5sg
+            setTimeout(() => {
+                let resultado=Math.sqrt(numero);
+                cb(resultado); // Llamamos al callback cuando finaliza el cálculo
+            }, 5000);
+        }
+
+        function ejecucionAsincrona() {
+            console.log("Antes de llamar a la función asíncrona");
+            calculoComplejoAsincrono(81, callback); // LLAMADA ASÍNCRONA (NO SE BLOQUEA EJECUCIÓN DEL RESTO DEL CÓDIGO)
+            console.log("Después de llamar a la función asíncrona");
+        }
+
+        function callback(resultado) {
+            console.log(`Resultado => ${resultado}`);
+        }
+        //  ****************************************************************************
+
+    </script>
+</body>
+
+</html>
