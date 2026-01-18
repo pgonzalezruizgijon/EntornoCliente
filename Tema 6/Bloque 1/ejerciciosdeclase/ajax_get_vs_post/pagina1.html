@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Problema</title>
+  <script src="ajax_get_post.js" refer></script>
+</head>
+<body>
+  <h1>Ejemplo de envío de parámetros usando GET y POST</h1>
+  <form action="pagina1.php" method="post" id="formulario">
+    Nombre:<input type="text" name="nombre" id="nombre" size="20"><br>
+    Comentarios:<br>
+    <textarea name="comentarios" id="comentarios" rows="10" cols="50"></textarea><br>
+    <select id="select-tipo-envio">
+      <option value="POST" selected>Enviar usando POST</option>
+      <option value="GET">Enviar usando GET</option>
+    </select>
+    <input type="submit" value="Enviar">
+    <div id="resultados"></div>
+    <br>
+    <a href="ver_comentarios.php" target="_blank">Ver resultados</a>
+  </form>
+</body>
+</html>
+
+
