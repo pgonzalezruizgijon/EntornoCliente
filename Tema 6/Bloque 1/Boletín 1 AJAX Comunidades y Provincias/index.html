@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comunidades y Provincias con AJAX</title>
+    <style>
+        body { font-family: sans-serif; }
+        h1 { color: #333; }
+        .form-row { margin-bottom: 15px; }
+        label { font-weight: bold; margin-right: 5px; }
+        select { padding: 3px; min-width: 150px; }
+    </style>
+</head>
+<body>
+
+    <h1>Comunidades autónomas con AJAX</h1>
+
+    <div class="form-row">
+        <label>Seleccione la comunidad autonoma:</label>
+        <select id="comunidades">
+            <option value="-1">Seleccionar...</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label>Provincias:</label>
+        <select id="provincias">
+            <option value="-1">Seleccionar...</option>
+        </select>
+    </div>
+
+    <script>
+        // Guardamos las referencias a los selectores
+        const selectCom = document.getElementById('comunidades');
+        const selectProv = document.getElementById('provincias');
+
+        // --- 1. CARGAR COMUNIDADES AL INICIAR (JSON) ---
+        window.onload = function() {
+            // Hacemos la petición a la API que devuelve JSON
+            fetch('api_comunidades.php')
+                .then(response => response.json()) // La API de comunidades es JSON
+                .then(datos => {
+                    datos.forEach(comunidad => {
+                        let opc = document.createElement('option');
+                        opc.value = comunidad.id;
+                        opc.textContent = comunidad.nombre;
+                        selectCom.appendChild(opc);
+                    });
+                })
+                .catch(err => console.error("Error al cargar comunidades:", err));
+        };
+
+        // --- 2. CARGAR PROVINCIAS CUANDO CAMBIE LA COMUNIDAD (XML) ---
+        selectCom.addEventListener('change', function() {
+            const id = this.value;
+
+            // Limpiamos siempre el selector de provincias (así dejamos que solo salga seleccioner si no hemos seleccionado ninguna comunidad autónoma)
+            selectProv.length = 1;
+
+            if (id !== "-1") {
+                // Hacemos la petición pasando el id por GET (?cod=id)
+                fetch('api_provincias.php?cod=' + id)
+                    .then(response => response.text()) // OJO: La API de provincias es XML (se lee como texto)
+                    .then(xmlTexto => {
+                        // Convertimos el texto en un objeto XML navegable
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xmlTexto, "text/xml");
+                        
+                        // Buscamos todas las etiquetas <provincia> dentro del XML
+                        const provincias = xmlDoc.getElementsByTagName("provincia");
+
+                        for (let i = 0; i < provincias.length; i++) {
+                            // Extraemos el ID y Nombre del XML
+                            const idProv = provincias[i].getElementsByTagName("id")[0].textContent;
+                            const nombreProv = provincias[i].getElementsByTagName("nombre")[0].textContent;
+
+                            // Creamos la opción y la añadimos
+                            let opc = document.createElement('option');
+                            opc.value = idProv;
+                            opc.textContent = nombreProv;
+                            selectProv.appendChild(opc);
+                        }
+                    })
+                    .catch(err => console.error("Error al cargar provincias:", err));
+            }
+        });
+    </script>
+</body>
+</html>
