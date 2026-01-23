@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador OMDB</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h2>Buscador de Películas y Series</h2>
+
+<form id="formulario">
+    <input type="text" id="titulo" placeholder="Nombre de la película o serie" required>
+
+    <select id="tipo">
+        <option value="">Todos</option>
+        <option value="movie">Películas</option>
+        <option value="series">Series</option>
+    </select>
+
+    <button type="submit" id="boton1">Buscar</button>
+</form>
+
+<div id="estado"></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Tipo</th>
+            <th>Año</th>
+            <th>Portada</th>
+        </tr>
+    </thead>
+    <tbody id="resultados"></tbody>
+</table>
+
+<script src="ajax_api_omdb.js"></script>
+</body>
+</html>
