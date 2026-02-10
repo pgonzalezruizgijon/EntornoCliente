@@ -1,0 +1,12 @@
+<div class="pokemon-container">
+  <h1>Lista de Pokémon - {{pokemons?.count}} </h1>
+    <div class="pokemon" *ngFor="let pokemon of pokemons?.results">
+        <span class="nombrePokemon">
+            {{pokemon.name}}
+        </span>
+    </div>
+
+    <button class="btn btn-success w-100" type="button" [disabled]="pokemons?.next == null" (click)="getMore(pokemons?.next)">Cargar más</button>
+
+
+</div>
