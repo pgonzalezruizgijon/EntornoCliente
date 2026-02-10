@@ -8,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class DadoComponent {
 
+
+  valor!:number; // = 1;
+
+  ngOnInit(): void {
+    this.valor=this.generarAleatorio();
+  }
+
+  generarAleatorio(){
+    return Math.trunc(Math.random()*6)+1;
+  }
+
 }
