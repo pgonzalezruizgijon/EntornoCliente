@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax1_php</title>
+    <script>
+        window.addEventListener("load", inicio);
+        function inicio(){
+            document.getElementById("nombre").addEventListener("keyup", mostrarNombre); // Cuando pulsemos una tecla y levantemos el dedo
+        }
+
+        function mostrarNombre(e) {
+            var cadena = e.target.value;
+            //var cadena = document.getElementByID("nombre").value;
+
+            if (cadena.length == 0) { // Si al levantar la tecla no hay nada (ej. al borrar)
+                document.getElementById("sugerencia").innerHTML = "";
+                return;
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function() {
+                    if (this.status == 200) {
+                        document.getElementById("sugerencia").innerHTML = this.responseText;
+                    }
+                };
+                // xhr.open("GET", "arraynombres.php?nombre="+cadena, true); En caso de que utilizáramos GET
+                xhr.open("POST", "arraynombres.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // Se añade cabecera para indicar tipo de codificación POST
+                // xhr.send(); En caso de que utilizáramos GET
+                xhr.send("nombre="+cadena);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+    <p><b>Escribe un nombre en el cuadro inferior:</b></p>
+    <form>
+        Nombre:
+        <input type="text" id="nombre">
+    </form>
+    <p>Sugerencias: <span id="sugerencia"></span></p>
+
+</body>
+</html>

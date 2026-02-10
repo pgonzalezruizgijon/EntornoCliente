@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax con PHP y JSON</title>
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio(){
+            document.getElementById("mostrar").addEventListener("click", mostrar);
+        }
+
+        function mostrar(){
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    var objeto = JSON.parse(this.responseText);
+
+                    // Mostramos los datos
+                    document.getElementById("parrafo").innerHTML = objeto.nombre + 
+                    " nacio el " + objeto.nacimiento + " en " + objeto.pais + "<br>";
+
+                    // Si queremos convertir un objeto Javascript en una cadena
+                    var cadena = JSON.stringify(objeto);
+                    document.getElementById("parrafo").innerHTML += "El objeto" + objeto +
+                    " en modo cadena es " + cadena;
+                }
+            };
+            xhr.open("GET", "ajax_json_objeto.php", true);
+            xhr.send();
+        }
+
+    </script>
+</head>
+<body>
+    <button id="mostrar">Mostrar</button>
+    <p id="parrafo"></p>
+</body>
+</html>
