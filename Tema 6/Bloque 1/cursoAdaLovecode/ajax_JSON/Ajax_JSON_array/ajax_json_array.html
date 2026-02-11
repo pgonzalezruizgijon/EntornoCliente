@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax JSON Arrray</title>
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio() {
+            document.getElementById("mostrar").addEventListener("click", mostrar);
+        }
+
+        function mostrar() {
+            var xhr = new XMLHttpRequest;
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    // Al hacer parse de un array recibimos un array
+                    var alumnos = JSON.parse(this.responseText);
+
+                    // Recorremos el array
+                    for (var i = 0; i<alumnos.length; i++){
+                        document.getElementById("parrafo").innerHTML += alumnos[i] + "<br>";
+                    }
+
+                    // Para convertir un array Javascript en cadena JSON usamos stringfy
+                    var cadena = JSON.stringify(alumnos);
+                    document.getElementById("parrafo").innerHTML += "El array " + alumnos + 
+                    " en modo cadena es " + cadena + "<br>";
+                }
+            };
+            xhr.open("GET", "ajax_json_array.php", true);
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <button id="mostrar">Mostrar</button>
+    <p id="parrafo"></p>
+</body>
+</html>
