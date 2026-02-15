@@ -1,0 +1,6 @@
+<h1>Listado de Productos</h1>
+<table>
+    @for(produc of productos; track produc.codigo){
+        <tr><td>{{produc.codigo}}</td><td>{{produc.descripcion}}</td><td>{{produc.precio}}</td></tr>
+    }
+</table>
