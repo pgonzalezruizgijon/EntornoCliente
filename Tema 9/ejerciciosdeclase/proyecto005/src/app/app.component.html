@@ -1,2 +1,15 @@
-<h1>Componentes que emiten eventos</h1>
-<app-cronometro (multiplo10)="manejadorMultiplo10($event)" [inicio]="7"></app-cronometro>
+<h1>Cuenta atrás con evento</h1>
+
+<app-cronometro
+  [inicio]="10"
+  (finalcountdown)="temporizadorFinalizado()"
+  #cronometro>
+</app-cronometro>
+
+<br>
+
+<button (click)="cronometro.iniciar()">Iniciar cuenta atrás</button>
+
+<p *ngIf="mensajeFinal">
+  {{mensajeFinal}}
+</p>

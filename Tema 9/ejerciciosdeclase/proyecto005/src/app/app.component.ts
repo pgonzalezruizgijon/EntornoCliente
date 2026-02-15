@@ -7,9 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'proyecto005';
 
-  manejadorMultiplo10(segundos:number){
-    alert("Evento!" + segundos);
+  title = 'proyecto005';
+  mensajeFinal = "";
+
+  temporizadorFinalizado() {
+    this.mensajeFinal = "El temporizador ha llegado a cero.";
   }
+
 }

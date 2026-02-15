@@ -1,0 +1,19 @@
+<div style="padding: 20px;">
+  <h2>Selector 1</h2>
+  <app-selectornumerico [minimo]="1" [maximo]="10" #selector1></app-selectornumerico>
+  <br>
+  <button (click)="fijarSelector1(1)">Fijar en 1</button>
+  <button (click)="fijarSelector1(5)">Fijar en 5</button>
+  <button (click)="fijarSelector1(10)">Fijar en 10</button>
+  <button (click)="resetearHijo1()">Resetear Hijo 1 (a 0)</button>
+
+  <hr>
+
+  <h2>Selector 2</h2>
+  <app-selectornumerico [minimo]="1" [maximo]="20" #selector2></app-selectornumerico>
+  <br>
+  <button (click)="fijarSelector2(1)">Fijar en 1</button>
+  <button (click)="fijarSelector2(5)">Fijar en 5</button>
+  <button (click)="fijarSelector2(10)">Fijar en 10</button>
+  <button (click)="resetearHijo2()">Resetear Hijo 2 (a 0)</button>
+</div>

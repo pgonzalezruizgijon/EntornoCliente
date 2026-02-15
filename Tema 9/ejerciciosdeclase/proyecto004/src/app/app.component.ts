@@ -6,38 +6,40 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
-  //title = 'proyecto004';
+export class AppComponent implements OnInit {
 
-  valor1:number=1;
-  valor2:number=1;
-  valor3:number=1;
+  valor1: number = 1;
+  valor2: number = 1;
+  valor3: number = 1;
+  valor4: number = 1;
+  valor5: number = 1;
 
-  mensaje="";
+  mensaje = "";
 
   ngOnInit(): void {
     this.lanzarDados();
   }
 
-  lanzarDados(){
-    this.valor1=this.generarAleatiorio();
-    this.valor2=this.generarAleatiorio();
-    this.valor3=this.generarAleatiorio();
+  lanzarDados() {
+    this.valor1 = this.generarAleatorio();
+    this.valor2 = this.generarAleatorio();
+    this.valor3 = this.generarAleatorio();
+    this.valor4 = this.generarAleatorio();
+    this.valor5 = this.generarAleatorio();
     this.comprobarJugada();
   }
 
-  comprobarJugada(){
-    if (this.valor1 == this.valor2 && this.valor1 == this.valor3) {
-      // alert("Jugada ganadora!");
-      this.mensaje="Has ganado!!";
-    } else{
-      // alert("Sigue intentando")
-      this.mensaje ="Sigue intentando";
+  comprobarJugada() {
+    const suma = this.valor1 + this.valor2 + this.valor3 + this.valor4 + this.valor5;
+
+    if (suma >= 20) {
+      this.mensaje = "¡Has ganado! Suma: " + suma;
+    } else {
+      this.mensaje = "Sigue intentando. Suma: " + suma;
     }
   }
 
-  generarAleatiorio(){
-    return Math.trunc(Math.random()*6)+1;
+  generarAleatorio() {
+    return Math.trunc(Math.random() * 6) + 1;
   }
-
 }
