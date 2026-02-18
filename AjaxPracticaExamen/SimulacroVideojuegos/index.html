@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo Retro AJAX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4">Consola Retro Database</h1>
+        
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label class="form-label">Filtrar por Plataforma:</label>
+                <select id="selectorPlataforma" class="form-select">
+                    <option value="">Cargando plataformas...</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Año</th>
+                            <th>Compañía</th>
+                            <th>Imagen</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaJuegos">
+                        </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-body" id="cajaDescripcion">
+                    <h5>Descripción:</h5>
+                    <p id="textoDescripcion">Selecciona un juego para ver su historia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="funciones.js"></script>
+</body>
+</html>
