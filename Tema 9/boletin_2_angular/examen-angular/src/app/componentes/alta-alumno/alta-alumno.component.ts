@@ -38,33 +38,25 @@ export class AltaAlumnoComponent {
     });
   }
 
-  guardar() {
+    guardar() {
     if (this.formAlumno.valid) {
-      const datosFormulario = this.formAlumno.value;
-      this.resultadoJson = JSON.stringify(datosFormulario, null, 2);
+      const datosJson = JSON.stringify(this.formAlumno.value);
+
+      alert(datosJson);
 
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", this.API_URL, true);
+      xhr.open("POST", "https://ruix.iesruizgijon.es/pgonzalez/angular/examen_angular/api/insertar_alumno.php", true);
       xhr.setRequestHeader("Content-Type", "application/json");
 
       xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            console.log("Respuesta del servidor:", xhr.responseText);
-            alert("¡Alumno insertado con éxito mediante XMLHttpRequest!");
-          } else {
-            console.error("Error en la petición:", xhr.statusText);
-            alert("Error al conectar con el servidor PHP.");
-          }
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log("Respuesta del servidor:", xhr.responseText);
         }
       };
 
-      // Enviamos el JSON convertido a string
-      xhr.send(JSON.stringify(datosFormulario));
-
+      xhr.send(datosJson);
     } else {
-      this.resultadoJson = "";
-      alert("Por favor, rellena los campos obligatorios.");
+      alert("Formulario no válido");
     }
   }
 }
