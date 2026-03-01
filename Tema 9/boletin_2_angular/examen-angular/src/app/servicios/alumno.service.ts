@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AlumnoService {
-  private API_URL = 'http://localhost/api';
+  private API_URL = 'https://ruix.iesruizgijon.es/pgonzalez/angular/examen-angular/api';
 
   constructor() { }
 
