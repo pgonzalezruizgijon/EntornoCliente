@@ -1,0 +1,32 @@
+<div style="padding: 20px; font-family: Arial;">
+  <h2 style="border-bottom: 2px solid #007bff; padding-bottom: 10px;">Listado de Alumnos</h2>
+  
+  <div style="background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; margin-top: 20px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #343a40; color: white; text-align: left;">
+          <th style="padding: 12px;">Nombre</th>
+          <th style="padding: 12px;">Email</th>
+          <th style="padding: 12px;">Curso</th>
+          <th style="padding: 12px; text-align: center;">Repetidor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let al of alumnos" style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px; font-weight: bold;">{{ al.nombre }}</td>
+          <td style="padding: 12px;">{{ al.mail }}</td>
+          <td style="padding: 12px;">{{ al.curso }}</td>
+          <td style="padding: 12px; text-align: center;">
+            <span [style.color]="al.repetidor ? 'red' : 'green'" style="font-weight: bold;">
+              {{ al.repetidor ? 'SÍ' : 'NO' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="alumnos.length === 0" style="padding: 20px; text-align: center; color: #666;">
+      No hay alumnos registrados o no se pudo conectar con el servidor PHP.
+    </div>
+  </div>
+</div>

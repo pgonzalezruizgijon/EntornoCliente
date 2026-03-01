@@ -1,0 +1,22 @@
+<div style="padding: 20px;">
+  <h2 style="margin-bottom: 20px; font-family: Arial;">Salón de Juegos Ruiz Gijón</h2>
+  
+  <div style="display: flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+    
+    <app-tragaperras [credito]="50" 
+      (premio)="alertPremio($event)" 
+      (sincredito)="alertSinSaldo($event)">
+    </app-tragaperras>
+
+    <app-tragaperras [credito]="70" 
+      (premio)="alertPremio($event)" 
+      (sincredito)="alertSinSaldo($event)">
+    </app-tragaperras>
+
+    <app-tragaperras [credito]="120" 
+      (premio)="alertPremio($event)" 
+      (sincredito)="alertSinSaldo($event)">
+    </app-tragaperras>
+
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div style="padding: 20px; max-width: 600px; font-family: Arial;">
+  <h2 style="border-bottom: 2px solid #007bff; padding-bottom: 10px;">Alta de alumno de IES Ruiz Gijón</h2>
+
+  <form [formGroup]="formAlumno" (ngSubmit)="guardar()" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre del alumno</mat-label>
+      <input matInput formControlName="nombre" placeholder="Ej. Don Pepito">
+      <mat-error *ngIf="formAlumno.get('nombre')?.invalid">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="mail" placeholder="ejemplo@iesruizgijon.com">
+      <mat-error *ngIf="formAlumno.get('mail')?.invalid">Introduce un email válido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Curso</mat-label>
+      <mat-select formControlName="curso">
+        <mat-option value="1º SMR">1º SMR</mat-option>
+        <mat-option value="2º SMR">2º SMR</mat-option>
+        <mat-option value="1º DAW">1º DAW</mat-option>
+        <mat-option value="2º DAW">2º DAW</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formAlumno.get('curso')?.invalid">Debes seleccionar un curso</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="repetidor" color="primary">¿Es repetidor?</mat-checkbox>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observaciones" rows="3"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="formAlumno.invalid" style="height: 50px; font-size: 16px;">
+      Guardar
+    </button>
+  </form>
+
+  <div *ngIf="resultadoJson" style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-left: 5px solid #28a745; border-radius: 4px;">
+    <h4 style="color: #28a745; margin-top: 0;">Todos los datos son válidos</h4>
+    <pre style="background: #e9ecef; padding: 15px; border-radius: 5px; overflow-x: auto;">{{ resultadoJson }}</pre>
+  </div>
+</div>
