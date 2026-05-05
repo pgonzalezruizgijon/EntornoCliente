@@ -1,0 +1,95 @@
+📝 EXAMEN – Programación en JavaScript (POO)
+🎬 Gestión de un Cine
+
+Se desea desarrollar un sistema orientado a objetos en JavaScript para gestionar las películas y sus proyecciones en un cine.
+
+Se pide implementar las siguientes clases:
+
+1. Clase Pelicula (2 puntos)
+
+Implementa una clase Pelicula con las siguientes características:
+
+🔹 Propiedades:
+id → número identificador
+titulo → cadena de texto
+genero → número entero
+director → cadena de texto
+duracion → duración en minutos (entero)
+🔹 Constantes estáticas:
+GENERO_HISTORIA = 0
+GENERO_SCFI = 1
+GENERO_COMEDIA = 2
+🔹 Métodos:
+Getters para todas las propiedades
+Método toString() que devuelva:
+"Título (duración min.)"
+2. Clase Proyeccion (3 puntos)
+
+Representa la proyección de una película en una fecha y hora concreta.
+
+🔹 Propiedades:
+pelicula → objeto de tipo Pelicula
+fecha → objeto Date
+🔹 Constructor:
+
+Recibe:
+
+(pelicula, fechaStr, horaStr)
+
+Donde:
+
+fechaStr tiene formato "dd/mm/yyyy"
+horaStr tiene formato "HH:MM"
+
+Debe construirse correctamente un objeto Date.
+
+🔹 Métodos:
+toString()
+
+Devuelve:
+
+"dd/mm/yyyy HH:MM:SS => Título (duración min.)"
+getFechaFinPelicula()
+
+Devuelve un objeto Date con la fecha y hora en la que termina la película, calculada como:
+
+fecha de inicio + duración de la película
+3. Clase Sala (3 puntos)
+
+Representa una sala de cine.
+
+🔹 Propiedades:
+idSala → número
+_proyecciones → array de objetos Proyeccion
+🔹 Métodos:
+añadirProyeccion(proyeccion)
+Añade una proyección al array
+Si el parámetro no es una instancia de Proyeccion, debe lanzar un error:
+"Solo se pueden añadir objetos de tipo Proyeccion"
+getProyeccionesGenero(genero)
+
+Devuelve un array con todas las proyecciones cuya película tenga el género indicado.
+
+getProyeccionesFecha(fechaStr)
+
+Devuelve un array con todas las proyecciones que se realicen en la fecha indicada ("dd/mm/yyyy").
+
+4. Pruebas (2 puntos)
+
+Se proporciona un fichero HTML con pruebas en consola.
+El alumno debe hacer que su implementación funcione correctamente con dichas pruebas.
+
+Se comprobará:
+
+Creación correcta de objetos
+Funcionamiento de los métodos
+Filtrado por género y fecha
+Cálculo de fecha de finalización
+Control de errores
+⚠️ Restricciones importantes
+No se permite herencia entre Pelicula, Proyeccion y Sala
+Se debe usar composición:
+Proyeccion tiene una Pelicula
+Sala tiene muchas Proyeccion
+Uso obligatorio de clases ES6
+Uso correcto del objeto Date

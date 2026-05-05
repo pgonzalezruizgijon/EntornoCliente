@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="cine.js"></script>
+</head>
+
+<body>
+    <h1>Testeo de Cine</h1>
+    <h2>Pulsa F12 para ver consola de depuración</h2>
+    <script>
+        // test_cine_console.js
+        // Asegúrate de que cine.js (Pelicula, Proyeccion, Sala) está cargado antes.
+
+        console.log("=== TEST CONSOLA: CINE ===");
+
+        // 1) Crear películas
+        const peli1 = new Pelicula(1, "La historia interminable", Pelicula.GENERO_HISTORIA, "Wolfgang Petersen", 102);
+        const peli2 = new Pelicula(2, "Regreso al futuro", Pelicula.GENERO_SCFI, "Robert Zemeckis", 116);
+        const peli3 = new Pelicula(3, "Aterriza como puedas", Pelicula.GENERO_COMEDIA, "Jim Abrahams", 88);
+
+        console.log("Películas creadas:");
+        console.log(peli1);
+        console.log(peli2);
+        console.log(peli3);
+
+        // 2) Crear proyecciones (fecha "dd/mm/yyyy", hora "HH:MM")
+        const proy1 = new Proyeccion(peli1, "01/12/2025", "16:00");
+        const proy2 = new Proyeccion(peli2, "01/12/2025", "18:30");
+        const proy3 = new Proyeccion(peli3, "02/12/2025", "20:00");
+
+        console.log("\nProyecciones creadas:");
+        console.log(proy1.toString());
+        console.log(proy2.toString());
+        console.log(proy3.toString());
+
+        // 3) Crear sala y añadir proyecciones
+        const sala1 = new Sala(1);
+        sala1.añadirProyeccion(proy1);
+        sala1.añadirProyeccion(proy2);
+        sala1.añadirProyeccion(proy3);
+
+        console.log("\nProyecciones en sala 1 (todas):");
+        for (const p of sala1._proyecciones) {
+            console.log(" -", p.toString());
+        }
+
+        // 4) Proyecciones por género
+        console.log("\nProyecciones de género SCFI:");
+        const proyScfi = sala1.getProyeccionesGenero(Pelicula.GENERO_SCFI);
+        proyScfi.forEach(p => console.log(" *", p.toString()));
+
+        // 5) Proyecciones por fecha
+        console.log("\nProyecciones del día 01/12/2025:");
+        const proyDia1 = sala1.getProyeccionesFecha("01/12/2025");
+        proyDia1.forEach(p => console.log(" *", p.toString()));
+
+        console.log("\nProyecciones del día 02/12/2025:");
+        const proyDia2 = sala1.getProyeccionesFecha("02/12/2025");
+        proyDia2.forEach(p => console.log(" *", p.toString()));
+
+        // 6) Fecha de fin de una película (ahora usando el método de Proyeccion)
+        console.log("\nFecha fin de 'Regreso al futuro' (id=2) a partir de su proyección:");
+        const finPeli2 = proy2.getFechaFinPelicula();
+        console.log(finPeli2 ? finPeli2.toString() : "null");
+
+        // 7) Error al añadir algo que no sea Proyeccion
+        console.log("\nProbando error al añadir algo que NO es Proyeccion:");
+        try {
+            // @ts-ignore
+            sala1.añadirProyeccion(peli1);
+        } catch (e) {
+            console.error("Error esperado:", e.message);
+        }
+
+        console.log("\n=== FIN TEST CONSOLA ===");
+
+
+    </script>
+</body>
+
+</html>
