@@ -1,0 +1,21 @@
+new Date() : valor absoluto
+getDate() : obtener el día del mes de una fecha (1 a 31)
+getDay() : obtener el día de la semana de una fecha(0 a 6)
+getFullYear() : obtener el año de una fecha
+getHours() : obtener las horas de una fecha (0 a 23)
+getMinutes() : obtener los minutos de una fecha (0 a 59)
+getMoth() : obtener el mes de una fecha (0 a 11)
+getTime() : devuelve el nº msg transcurridos desde el 1/1/1970 hasta la fecha indicada
+getTimezoneOffset() : devuelve la diferencia horaria (en minutos) con la hora UTC
+now() : devuelve nº msg transcurridos desde el 1/1/1970 hasta el momento actual
+setDate() : establecer en una fecha el dia del mes (1 a 31)
+setFullYear() : establecer en una fecha el año
+toLocaleDateString() : muestra en formato texto la parte del día,mes, año de una fecha (sin la hora)
+toLocaleTimeString() : muestra en formato texto una hora
+toLocaleString() : muestra en formato texto la parte del día, mes, año y hora de una fecha
+
+Cómo calcular el día siguiente a una fecha determinada
+
+let fecha=new Date(2020,1,28); // 28 de febrero de 2020 (año bisiesto)
+
+fecha.setDate(fecha.getDate()+1); //29 de febrero de 2020

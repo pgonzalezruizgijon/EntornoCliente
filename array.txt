@@ -1,0 +1,144 @@
+concat : concatenar arrays
+copyWithin() : copiar eltos dentro de un array
+fill() : rellenar array con un valor
+forEach() : para recorrer arrays
+includes() : comprueba si un array contiene un determinado elto
+indexOf() : devuelve el primer índice de un elto buscado
+Array.isArray() : comprueba si un objeto es de tipo Array
+Array.from() : crea un array a partir de una estructura iterable (como p. ej. un string)
+join() : devuelve el array como texto usando el separador indicado
+lastIndexOf() : devuelve el últmo índice de un elto buscado
+length : devuelve la longitud del array
+pop() : extraer un elto del final del array
+push() : añadir un elto al final del array
+reverse() : invierte el orden de un array (modifica el array original)
+shift() : extrae el primer elto de un array
+slice() : devuelve un subarray (sin modificar el original)
+sort() : ordenar array (modifica el array original). Solo funciona con texto, para otro tipo de datos (number, objetos, etc) hay que suministrar una función comparadora
+splice() : añade/elimina eltos de un array (el array original se ve modificado)
+unshift() : añadir un elto al principio de un array
+
+Métodos para filtar, mapear, realizar comprobaciones y realizar búsquedas:
+every() : comprobar que todos los eltos del array cumplen un determinado criterio
+some() : comprobar que al menos un elto del array cumple un determinado criterio
+filter() : filtrar eltos de un array que cumplan un cierto criterio
+map() : realizar un mapeo (transformación) de todos los eltos de un array
+find(): busca un elto en el array que cumpla un determinado criterio
+findIndex() : busca el índice de un elto en el array que cumpla un determinado criterio
+
+🔹 concat() → unir arrays
+let a = [1, 2];
+let b = [3, 4];
+let resultado = a.concat(b);
+
+console.log(resultado); // [1, 2, 3, 4]
+🔹 copyWithin() → copiar dentro del mismo array
+let arr = [1, 2, 3, 4];
+arr.copyWithin(0, 2);
+
+console.log(arr); // [3, 4, 3, 4]
+🔹 fill() → rellenar con un valor
+let arr = [1, 2, 3];
+arr.fill(0);
+
+console.log(arr); // [0, 0, 0]
+🔹 forEach() → recorrer array
+let arr = [1, 2, 3];
+
+arr.forEach(num => {
+  console.log(num);
+});
+🔹 includes() → comprobar si existe
+let arr = [1, 2, 3];
+
+console.log(arr.includes(2)); // true
+🔹 indexOf() y lastIndexOf()
+let arr = [1, 2, 3, 2];
+
+console.log(arr.indexOf(2)); // 1
+console.log(arr.lastIndexOf(2)); // 3
+🔹 Array.isArray()
+console.log(Array.isArray([1,2])); // true
+🔹 Array.from() → convertir a array
+let texto = "hola";
+let arr = Array.from(texto);
+
+console.log(arr); // ['h','o','l','a']
+🔹 join() → array a string
+let arr = ["Hola", "mundo"];
+
+console.log(arr.join(" ")); // "Hola mundo"
+🔹 length
+let arr = [1,2,3];
+
+console.log(arr.length); // 3
+🔁 2. Métodos que modifican el array
+🔹 push() y pop()
+let arr = [1,2];
+
+arr.push(3); // añade al final
+arr.pop();   // elimina el último
+🔹 shift() y unshift()
+let arr = [1,2];
+
+arr.unshift(0); // añade al inicio
+arr.shift();    // elimina el primero
+🔹 reverse()
+let arr = [1,2,3];
+
+arr.reverse();
+
+console.log(arr); // [3,2,1]
+🔹 sort()
+let arr = [10, 2, 5];
+
+arr.sort(); 
+console.log(arr); // [10, 2, 5] ❌ (como texto)
+
+arr.sort((a,b) => a - b);
+console.log(arr); // [2,5,10] ✅
+🔹 splice() → añadir/eliminar
+let arr = [1,2,3];
+
+arr.splice(1, 1); // elimina 1 elemento desde posición 1
+
+console.log(arr); // [1,3]
+🔹 slice() → copiar parte (NO modifica)
+let arr = [1,2,3,4];
+
+let sub = arr.slice(1,3);
+
+console.log(sub); // [2,3]
+🔍 3. Métodos avanzados (muy importantes)
+🔹 every() → todos cumplen
+let arr = [2,4,6];
+
+console.log(arr.every(n => n % 2 === 0)); // true
+🔹 some() → al menos uno cumple
+let arr = [1,3,4];
+
+console.log(arr.some(n => n % 2 === 0)); // true
+🔹 filter() → filtrar
+let arr = [1,2,3,4];
+
+let pares = arr.filter(n => n % 2 === 0);
+
+console.log(pares); // [2,4]
+🔹 map() → transformar
+let arr = [1,2,3];
+
+let dobles = arr.map(n => n * 2);
+
+console.log(dobles); // [2,4,6]
+🔹 find() → primer elemento que cumple
+let arr = [1,2,3,4];
+
+let resultado = arr.find(n => n > 2);
+
+console.log(resultado); // 3
+🔹 findIndex() → índice del que cumple
+let arr = [1,2,3,4];
+
+let indice = arr.findIndex(n => n > 2);
+
+console.log(indice); // 2

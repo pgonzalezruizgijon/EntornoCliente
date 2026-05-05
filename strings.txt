@@ -1,0 +1,22 @@
+charAt() : carácter en una determinada posición del texto
+concat() : concatenar cadenas de texto
+endsWith() : comprobar si un texto termina con una determinada subcadena
+includes() : comprobar si un texto contiene una subcadena
+indexOf() : buscar la posición de una subcadena dentro de un texto. Se puede indicar el índice para empezar a buscar
+lastIndexOf() : buscar la última posición de una subcadena dentro de un texto
+padEnd() : rellenar con una subcadena al final del texto
+padStart() : rellenar con una subcadena al principio
+repeat() : repetir una subcadena un número de veces
+replace() : reemplazar una subcadena dentro de un texto(una sola vez)
+replaceAll() : reemplazar una subcadena dentro de un texto (varias veces)
+search() : buscar una subcadena dentro de un texto. Se pueden usar expr. regulares
+slice() : extraer una subcadena de un texto. Acepta índices negativos
+split() : dividir un texto usando algún carácter (p.e. una coma)
+startsWith() : comprobar si un texto comienza por una subcadena
+substr() : extraer una subcadena de un texto
+substring() : extraer una subcadena de un texto
+toLowerCase() : convertir texto a minúsculas
+toUpperCase() : convertir texto a mayúscular
+trim() : quitar de un texto los espacios del principio y final
+trimEnd() : quitar de un texto los espacios del final
+trimStart() : quitar de un texto los espacios del principio
