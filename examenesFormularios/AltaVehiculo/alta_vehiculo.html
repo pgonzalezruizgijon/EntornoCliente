@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alta vehículo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container border mt-3 mb-3 p-4">
+    <h1>Alta vehículo</h1>
+
+    <form name="miformulario" method="POST" action="procesar_vehiculo.php">
+
+      <div class="mb-3">
+        <label class="form-label" for="inputPropietario">Propietario (*):</label>
+        <input class="form-control" type="text" id="inputPropietario">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="inputMatricula">Matrícula (*):</label>
+        <input class="form-control" type="text" id="inputMatricula" placeholder="Ej: 1234ABC">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="inputAnio">Año del vehículo (*):</label>
+        <input class="form-control" type="number" id="inputAnio">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Tipo de vehículo (*):</label>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoVehiculo" id="inputCoche" value="coche" checked>
+          <label class="form-check-label" for="inputCoche">Coche</label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoVehiculo" id="inputMoto" value="moto">
+          <label class="form-check-label" for="inputMoto">Moto</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="inputRevision">Fecha próxima revisión (*):</label>
+        <input class="form-control" type="date" id="inputRevision">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="inputSeguro">Tiene seguro:</label>
+        <input type="checkbox" class="form-check-input" id="inputSeguro">
+
+        <label class="form-label" for="inputCompania">Compañía:</label>
+        <select class="form-select" id="inputCompania" disabled>
+          <option value="">Seleccionar</option>
+          <option value="1">Mapfre</option>
+          <option value="2">AXA</option>
+          <option value="3">Allianz</option>
+          <option value="4">Mutua Madrileña</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="inputObservaciones">Observaciones:</label>
+        <textarea class="form-control" id="inputObservaciones" rows="4"></textarea>
+      </div>
+
+      <input type="submit" class="btn btn-primary" id="enviar" value="Enviar">
+      <input type="reset" class="btn btn-warning" value="Borrar">
+
+    </form>
+  </div>
+
+  <script src="alta_vehiculo.js"></script>
+</body>
+</html>

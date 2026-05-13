@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apuntes JS: Formularios, Eventos y Validaciones</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #1f2937;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      color: #d1d5db;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #1f2937;
+      background: #e5e7eb;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    section {
+      background: white;
+      margin-bottom: 25px;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #111827;
+      border-bottom: 3px solid #e5e7eb;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #374151;
+      margin-top: 25px;
+    }
+
+    .nota {
+      background: #fff7ed;
+      border-left: 5px solid #fb923c;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+
+    .ok {
+      background: #ecfdf5;
+      border-left: 5px solid #10b981;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+
+    .peligro {
+      background: #fef2f2;
+      border-left: 5px solid #ef4444;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+
+    pre {
+      background: #111827;
+      color: #f9fafb;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.92rem;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    form, .demo {
+      background: #f9fafb;
+      padding: 15px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    input, select, textarea, button {
+      margin: 5px 0 10px;
+      padding: 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font-size: 1rem;
+    }
+
+    input[type="button"], input[type="submit"], button {
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: none;
+      font-weight: bold;
+    }
+
+    input[type="reset"] {
+      background: #6b7280;
+      color: white;
+      border: none;
+      font-weight: bold;
+    }
+
+    .resultado {
+      margin-top: 10px;
+      padding: 10px;
+      background: #eef2ff;
+      border-radius: 8px;
+      min-height: 35px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .tarjeta {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .resaltado {
+      background: #fef08a !important;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Apuntes rápidos de JavaScript</h1>
+    <p>Formularios, eventos, validaciones, fechas y ejercicios típicos de examen</p>
+  </header>
+
+  <nav>
+    <a href="#eventos">Eventos</a>
+    <a href="#controles">Controles</a>
+    <a href="#validaciones">Validaciones</a>
+    <a href="#fechas">Fechas</a>
+    <a href="#ejercicios">Ejercicios típicos</a>
+    <a href="#chuleta">Chuleta final</a>
+  </nav>
+
+  <main>
+    <section id="eventos">
+      <h2>1. Eventos con addEventListener</h2>
+      <p>Un evento es una acción que ocurre en la página: hacer click, escribir, cambiar un select, entrar en un input, salir de un input, etc.</p>
+
+      <div class="ok">
+        Estructura clave: <strong>elemento.addEventListener("evento", funcion);</strong><br>
+        El evento se escribe sin <strong>on</strong>. Es <code>click</code>, no <code>onclick</code>.
+      </div>
+
+      <pre><code>addEventListener("load", iniciar);
+
+function iniciar() {
+  let boton = document.querySelector("#btn");
+  boton.addEventListener("click", saludar);
+}
+
+function saludar() {
+  alert("Hola");
+}</code></pre>
+
+      <div class="demo">
+        <input type="button" id="btnSaludar" value="Probar click">
+        <div id="resSaludar" class="resultado"></div>
+      </div>
+
+      <h3>Errores típicos</h3>
+      <pre><code>// MAL
+boton.addEventListener("onclick", saludar);
+boton.addEventListener("click", saludar());
+
+// BIEN
+boton.addEventListener("click", saludar);</code></pre>
+    </section>
+
+    <section id="controles">
+      <h2>2. Rescatar datos de formularios</h2>
+
+      <div class="grid">
+        <div class="tarjeta">
+          <h3>Input, textarea, date, email, number</h3>
+          <p>Se usa <code>.value</code>.</p>
+          <pre><code>let nombre = document.querySelector("#nombre").value;</code></pre>
+        </div>
+
+        <div class="tarjeta">
+          <h3>Checkbox</h3>
+          <p>Se usa <code>.checked</code>. Devuelve <code>true</code> o <code>false</code>.</p>
+          <pre><code>let aceptado = document.querySelector("#acepto").checked;</code></pre>
+        </div>
+
+        <div class="tarjeta">
+          <h3>Radio button</h3>
+          <p>Se recorren los radios con el mismo <code>name</code>.</p>
+          <pre><code>let radios = document.getElementsByName("sexo");
+for (let i = 0; i &lt; radios.length; i++) {
+  if (radios[i].checked) {
+    console.log(radios[i].value);
+  }
+}</code></pre>
+        </div>
+
+        <div class="tarjeta">
+          <h3>Select</h3>
+          <p>Para el valor se usa <code>.value</code>. Para el texto visible se usa <code>options[selectedIndex].text</code>.</p>
+          <pre><code>let select = document.querySelector("#color");
+let valor = select.value;
+let texto = select.options[select.selectedIndex].text;</code></pre>
+        </div>
+      </div>
+
+      <h3>Ejemplo práctico: leer varios controles</h3>
+      <form id="formLectura">
+        <label for="txtNombre">Nombre:</label><br>
+        <input type="text" id="txtNombre"><br>
+
+        <label for="txtFecha">Fecha de nacimiento:</label><br>
+        <input type="date" id="txtFecha"><br>
+
+        <label>Sexo:</label><br>
+        <input type="radio" name="sexo" value="Hombre"> Hombre
+        <input type="radio" name="sexo" value="Mujer"> Mujer
+        <input type="radio" name="sexo" value="Otro"> Otro<br>
+
+        <label for="chkCondiciones">Acepto condiciones:</label>
+        <input type="checkbox" id="chkCondiciones"><br>
+
+        <label for="selCurso">Curso:</label><br>
+        <select id="selCurso">
+          <option value="daw">2º DAW</option>
+          <option value="dam">2º DAM</option>
+          <option value="asir">2º ASIR</option>
+        </select><br>
+
+        <label for="txtObs">Observaciones:</label><br>
+        <textarea id="txtObs" rows="4" cols="40"></textarea><br>
+
+        <input type="button" id="btnLeerFormulario" value="Leer formulario">
+      </form>
+      <div id="resFormulario" class="resultado"></div>
+    </section>
+
+    <section id="validaciones">
+      <h2>3. Validaciones HTML5 y setCustomValidity</h2>
+
+      <h3>Validaciones rápidas con HTML5</h3>
+      <pre><code>&lt;input type="email" required&gt;
+&lt;input type="text" minlength="3" maxlength="8" required&gt;
+&lt;input type="number" min="0" max="10"&gt;
+&lt;input type="date" min="2026-01-01" max="2026-12-31"&gt;
+&lt;input type="text" pattern="[0-9]{5}" title="Debe tener 5 números"&gt;</code></pre>
+
+      <div class="nota">
+        <strong>pattern</strong> usa expresiones regulares. Ejemplo: <code>[0-9]{5}</code> significa exactamente 5 números.
+      </div>
+
+      <h3>Validación personalizada</h3>
+      <p>Se usa cuando necesitas una condición que HTML no puede comprobar solo, por ejemplo repetir contraseña.</p>
+
+      <pre><code>if (password1 === password2) {
+  campoPassword2.setCustomValidity("");
+} else {
+  campoPassword2.setCustomValidity("Las contraseñas no coinciden");
+}</code></pre>
+    </section>
+
+    <section id="fechas">
+      <h2>4. Fechas típicas en JavaScript</h2>
+
+      <h3>Guardar fecha de alta</h3>
+      <pre><code>let registro = {
+  nombre: "Producto",
+  fechaAlta: new Date()
+};</code></pre>
+
+      <h3>Mostrar fecha en formato dd/mm/yyyy</h3>
+      <pre><code>function formatearFecha(fecha) {
+  let f = new Date(fecha);
+  let dia = f.getDate();
+  let mes = f.getMonth() + 1;
+  let anio = f.getFullYear();
+  return `${dia}/${mes}/${anio}`;
+}</code></pre>
+
+      <h3>Calcular edad</h3>
+      <pre><code>function calcularEdad(fechaNacimiento) {
+  let hoy = new Date();
+  let nacimiento = new Date(fechaNacimiento);
+  let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+  if (
+    hoy.getMonth() &lt; nacimiento.getMonth() ||
+    (hoy.getMonth() === nacimiento.getMonth() &amp;&amp; hoy.getDate() &lt; nacimiento.getDate())
+  ) {
+    edad--;
+  }
+
+  return edad;
+}</code></pre>
+
+      <div class="demo">
+        <label for="fechaEdad">Fecha nacimiento:</label><br>
+        <input type="date" id="fechaEdad">
+        <input type="button" id="btnEdad" value="Calcular edad">
+        <div id="resEdad" class="resultado"></div>
+      </div>
+    </section>
+
+    <section id="ejercicios">
+      <h2>5. Ejercicios típicos de examen resueltos</h2>
+
+      <h3>Ejercicio 1: repetir contraseña</h3>
+      <p>Objetivo: comprobar que las dos contraseñas son iguales antes de enviar.</p>
+
+      <form id="formPasswords" action="#">
+        <label for="pass1">Contraseña:</label><br>
+        <input type="password" id="pass1" required minlength="8"><br>
+
+        <label for="pass2">Repetir contraseña:</label><br>
+        <input type="password" id="pass2" required minlength="8"><br>
+
+        <input type="submit" id="btnPass" value="Enviar">
+      </form>
+      <div id="resPass" class="resultado"></div>
+
+      <pre><code>function validarPasswords() {
+  let pass1 = document.querySelector("#pass1").value;
+  let pass2 = document.querySelector("#pass2");
+
+  if (pass1 === pass2.value) {
+    pass2.setCustomValidity("");
+  } else {
+    pass2.setCustomValidity("Las contraseñas no coinciden");
+  }
+}</code></pre>
+
+      <h3>Ejercicio 2: aceptar condiciones obligatorio</h3>
+      <p>Objetivo: no dejar enviar si el checkbox no está marcado.</p>
+
+      <form id="formCondiciones" action="#">
+        <input type="checkbox" id="acepto"> Acepto las condiciones<br>
+        <input type="submit" value="Enviar">
+      </form>
+      <div id="resCondiciones" class="resultado"></div>
+
+      <pre><code>function validarCondiciones(e) {
+  let acepto = document.querySelector("#acepto").checked;
+
+  if (!acepto) {
+    e.preventDefault();
+    alert("Debes aceptar las condiciones");
+  }
+}</code></pre>
+
+      <h3>Ejercicio 3: cambiar contenido según select</h3>
+      <p>Objetivo: al cambiar un select, mostrar el texto de la opción elegida.</p>
+
+      <div class="demo">
+        <select id="selAsignatura">
+          <option value="js">JavaScript</option>
+          <option value="php">PHP</option>
+          <option value="docker">Docker</option>
+        </select>
+        <div id="resAsignatura" class="resultado"></div>
+      </div>
+
+      <pre><code>function mostrarAsignatura() {
+  let select = document.querySelector("#selAsignatura");
+  let texto = select.options[select.selectedIndex].text;
+  document.querySelector("#resAsignatura").innerHTML = texto;
+}</code></pre>
+
+      <h3>Ejercicio 4: validar código postal</h3>
+      <p>Objetivo: pedir exactamente 5 números.</p>
+
+      <form id="formCP" action="#">
+        <label for="cp">Código postal:</label><br>
+        <input type="text" id="cp" pattern="[0-9]{5}" title="Debe tener exactamente 5 números" required>
+        <input type="submit" value="Enviar">
+      </form>
+      <div id="resCP" class="resultado"></div>
+
+      <pre><code>&lt;input type="text" pattern="[0-9]{5}" title="Debe tener exactamente 5 números" required&gt;</code></pre>
+
+      <h3>Ejercicio 5: alta con fecha actual</h3>
+      <p>Objetivo: crear un objeto con nombre y fecha exacta de alta.</p>
+
+      <div class="demo">
+        <label for="nombreAlta">Nombre:</label><br>
+        <input type="text" id="nombreAlta">
+        <input type="button" id="btnAlta" value="Dar alta">
+        <div id="resAlta" class="resultado"></div>
+      </div>
+
+      <pre><code>let registro = {
+  nombre: nombre,
+  fechaAlta: new Date()
+};</code></pre>
+
+      <h3>Ejercicio 6: input focus y blur</h3>
+      <p>Objetivo: al entrar en el input se resalta; al salir se quita el resaltado.</p>
+
+      <div class="demo">
+        <input type="text" id="inputFocus" placeholder="Haz click aquí">
+        <div id="resFocus" class="resultado"></div>
+      </div>
+
+      <pre><code>input.addEventListener("focus", function() {
+  input.classList.add("resaltado");
+});
+
+input.addEventListener("blur", function() {
+  input.classList.remove("resaltado");
+});</code></pre>
+    </section>
+
+    <section id="chuleta">
+      <h2>6. Chuleta final para examen</h2>
+
+      <pre><code>// Esperar a que cargue la página
+addEventListener("load", iniciar);
+
+function iniciar() {
+  document.querySelector("#boton").addEventListener("click", funcion);
+}
+
+// Leer input
+let valor = document.querySelector("#campo").value;
+
+// Leer checkbox
+let marcado = document.querySelector("#check").checked;
+
+// Leer select
+let select = document.querySelector("#select");
+let valorSelect = select.value;
+let textoSelect = select.options[select.selectedIndex].text;
+
+// Leer radio
+let radios = document.getElementsByName("grupo");
+for (let i = 0; i &lt; radios.length; i++) {
+  if (radios[i].checked) console.log(radios[i].value);
+}
+
+// Validación personalizada
+campo.setCustomValidity("");
+campo.setCustomValidity("Mensaje de error");
+
+// Fecha actual
+let ahora = new Date();
+
+// Evitar envío de formulario
+e.preventDefault();</code></pre>
+    </section>
+  </main>
+
+  <section id="regex">
+  <h2>7. Expresiones regulares (REGEX) + métodos JS</h2>
+
+  <p>Se usan para validar textos (emails, códigos postales, contraseñas, etc.) y para buscar o modificar cadenas.</p>
+
+  <h3>Métodos importantes</h3>
+
+  <pre><code>
+// search → devuelve posición o -1
+let texto = "Código 41710";
+texto.search(/\d{5}/);
+
+// replace → sustituye coincidencias
+texto.replace(/\d{5}/g, "CP");
+
+// split → divide texto
+let frase = "hola,adios.mañana";
+frase.split(/[,.]/);
+
+// match → devuelve coincidencias
+let numeros = "10 20 30";
+numeros.match(/\d+/g);
+  </code></pre>
+
+  <div class="nota">
+    Ejemplo típico: buscar códigos postales con /\b\d{5}\b/
+  </div>
+
+  <h3>Patrones típicos de examen</h3>
+
+  <pre><code>
+// Código postal (5 números)
+/^[0-9]{5}$/
+
+// Email simple
+/\w+@\w+\.\w+/
+
+// Fecha dd/mm/yyyy
+/(\d{1,2}\/\d{1,2}\/\d{4})/
+
+// Solo números
+/^[0-9]+$/
+
+// Contraseña fuerte
+/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/
+  </code></pre>
+
+  <div class="demo">
+    <label>Probar regex (solo números):</label><br>
+    <input type="text" id="txtRegex">
+    <input type="button" id="btnRegex" value="Validar">
+    <div id="resRegex" class="resultado"></div>
+  </div>
+</section>
+
+  <footer>
+    Apuntes rápidos para repasar antes del examen.
+  </footer>
+
+  <script>
+    addEventListener("load", iniciar);
+
+    function iniciar() {
+      document.querySelector("#btnSaludar").addEventListener("click", saludar);
+      document.querySelector("#btnLeerFormulario").addEventListener("click", leerFormulario);
+      document.querySelector("#btnEdad").addEventListener("click", mostrarEdad);
+      document.querySelector("#formPasswords").addEventListener("submit", enviarPasswords);
+      document.querySelector("#pass1").addEventListener("input", validarPasswords);
+      document.querySelector("#pass2").addEventListener("input", validarPasswords);
+      document.querySelector("#formCondiciones").addEventListener("submit", validarCondiciones);
+      document.querySelector("#selAsignatura").addEventListener("change", mostrarAsignatura);
+      document.querySelector("#formCP").addEventListener("submit", enviarCP);
+      document.querySelector("#btnAlta").addEventListener("click", darAlta);
+
+      let inputFocus = document.querySelector("#inputFocus");
+      inputFocus.addEventListener("focus", ganarFoco);
+      inputFocus.addEventListener("blur", perderFoco);
+
+      mostrarAsignatura();
+    }
+
+    function saludar() {
+      document.querySelector("#resSaludar").innerHTML = "Has hecho click usando addEventListener.";
+    }
+
+    function leerFormulario() {
+      let nombre = document.querySelector("#txtNombre").value;
+      let fecha = document.querySelector("#txtFecha").value;
+      let condiciones = document.querySelector("#chkCondiciones").checked;
+      let curso = document.querySelector("#selCurso");
+      let observaciones = document.querySelector("#txtObs").value;
+      let sexo = "No seleccionado";
+
+      let radios = document.getElementsByName("sexo");
+      for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          sexo = radios[i].value;
+        }
+      }
+
+      document.querySelector("#resFormulario").innerHTML = `
+        <strong>Nombre:</strong> ${nombre || "Vacío"}<br>
+        <strong>Fecha:</strong> ${fecha || "Vacía"}<br>
+        <strong>Sexo:</strong> ${sexo}<br>
+        <strong>Acepta condiciones:</strong> ${condiciones}<br>
+        <strong>Curso value:</strong> ${curso.value}<br>
+        <strong>Curso texto:</strong> ${curso.options[curso.selectedIndex].text}<br>
+        <strong>Observaciones:</strong> ${observaciones || "Vacío"}
+      `;
+    }
+
+    function calcularEdad(fechaNacimiento) {
+      let hoy = new Date();
+      let nacimiento = new Date(fechaNacimiento);
+      let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+      if (
+        hoy.getMonth() < nacimiento.getMonth() ||
+        (hoy.getMonth() === nacimiento.getMonth() && hoy.getDate() < nacimiento.getDate())
+      ) {
+        edad--;
+      }
+
+      return edad;
+    }
+
+    function mostrarEdad() {
+      let fecha = document.querySelector("#fechaEdad").value;
+      if (fecha === "") {
+        document.querySelector("#resEdad").innerHTML = "Introduce una fecha.";
+      } else {
+        document.querySelector("#resEdad").innerHTML = "Edad: " + calcularEdad(fecha) + " años.";
+      }
+    }
+
+    function validarPasswords() {
+      let pass1 = document.querySelector("#pass1").value;
+      let pass2 = document.querySelector("#pass2");
+
+      if (pass1 === pass2.value) {
+        pass2.setCustomValidity("");
+      } else {
+        pass2.setCustomValidity("Las contraseñas no coinciden");
+      }
+    }
+
+    function enviarPasswords(e) {
+      validarPasswords();
+      if (!e.target.checkValidity()) {
+        document.querySelector("#resPass").innerHTML = "Hay errores en el formulario.";
+        return;
+      }
+      e.preventDefault();
+      document.querySelector("#resPass").innerHTML = "Contraseñas correctas. Formulario válido.";
+    }
+
+    function validarCondiciones(e) {
+      let acepto = document.querySelector("#acepto").checked;
+      if (!acepto) {
+        e.preventDefault();
+        document.querySelector("#resCondiciones").innerHTML = "Debes aceptar las condiciones.";
+      } else {
+        e.preventDefault();
+        document.querySelector("#resCondiciones").innerHTML = "Condiciones aceptadas.";
+      }
+    }
+
+    function mostrarAsignatura() {
+      let select = document.querySelector("#selAsignatura");
+      let texto = select.options[select.selectedIndex].text;
+      document.querySelector("#resAsignatura").innerHTML = "Has elegido: " + texto + " (value: " + select.value + ")";
+    }
+
+    function enviarCP(e) {
+      e.preventDefault();
+      document.querySelector("#resCP").innerHTML = "Código postal válido.";
+    }
+
+    function darAlta() {
+      let nombre = document.querySelector("#nombreAlta").value;
+      if (nombre.trim() === "") {
+        document.querySelector("#resAlta").innerHTML = "Introduce un nombre.";
+        return;
+      }
+
+      let registro = {
+        nombre: nombre,
+        fechaAlta: new Date()
+      };
+
+      document.querySelector("#resAlta").innerHTML = `
+        <strong>Alta creada</strong><br>
+        Nombre: ${registro.nombre}<br>
+        Fecha guardada: ${registro.fechaAlta.toLocaleString()}<br>
+        ISO para servidor: ${registro.fechaAlta.toISOString()}
+      `;
+    }
+
+    function ganarFoco() {
+      let input = document.querySelector("#inputFocus");
+      input.classList.add("resaltado");
+      document.querySelector("#resFocus").innerHTML = "El input ha ganado el foco.";
+    }
+
+    function perderFoco() {
+      let input = document.querySelector("#inputFocus");
+      input.classList.remove("resaltado");
+      document.querySelector("#resFocus").innerHTML = "El input ha perdido el foco.";
+    }
+
+    document.querySelector("#btnRegex").addEventListener("click", validarNumero);
+
+    function validarNumero() {
+      let valor = document.querySelector("#txtRegex").value;
+      let regex = /^[0-9]+$/;
+    
+      if (regex.test(valor)) {
+        document.querySelector("#resRegex").innerHTML = "✔ Solo números";
+      } else {
+        document.querySelector("#resRegex").innerHTML = "❌ No es válido";
+      }
+    }
+
+  </script>
+</body>
+</html>

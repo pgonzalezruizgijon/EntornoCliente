@@ -1,0 +1,66 @@
+body{
+  font-family: Arial, sans-serif;
+  margin: 18px;
+}
+
+#listaDias{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dia-card{
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 170px;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+.dia-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.dia-card img{
+  width: 28px;
+  height: 28px;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 10px;
+}
+
+th, td{
+  border: 1px solid #999;
+  padding: 8px;
+  text-align: center;
+}
+
+thead th{
+  background: #f3f3f3;
+}
+
+td .prevision-box{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+td .prevision-box img{
+  width: 26px;
+  height: 26px;
+}
+
+td .viento-img{
+  width: 30px;
+  height: 30px;
+}

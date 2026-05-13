@@ -19,3 +19,114 @@ Cómo calcular el día siguiente a una fecha determinada
 let fecha=new Date(2020,1,28); // 28 de febrero de 2020 (año bisiesto)
 
 fecha.setDate(fecha.getDate()+1); //29 de febrero de 2020
+
+Tipicos que entran:
+
+🧱 1. Crear fechas (TODAS las formas típicas)
+let ahora = new Date();
+let fechaTexto = new Date("2024-05-10");
+let fechaNumeros = new Date(2024, 4, 10); 
+// mes empieza en 0 → mayo = 4
+📊 2. Obtener datos de la fecha
+let f = new Date();
+
+f.getFullYear(); // 2026
+f.getMonth();    // 0-11 ⚠️
+f.getDate();     // día del mes
+f.getDay();      // 0 domingo - 6 sábado
+
+👉 Ejemplo práctico:
+
+let f = new Date();
+
+console.log(`Hoy es ${f.getDate()}/${f.getMonth()+1}/${f.getFullYear()}`);
+⏰ 3. Hora completa
+let f = new Date();
+
+f.getHours();
+f.getMinutes();
+f.getSeconds();
+
+👉 Mostrar hora:
+
+console.log(`${f.getHours()}:${f.getMinutes()}`);
+💾 4. GUARDAR fecha de alta (MUY IMPORTANTE)
+let registro = {
+  nombre: "Usuario",
+  fechaAlta: new Date()
+};
+
+👉 O para enviar a servidor:
+
+let fecha = new Date().toISOString();
+📆 5. Formatear fecha (típico examen)
+function formatearFecha(fecha) {
+  let f = new Date(fecha);
+
+  let dia = f.getDate();
+  let mes = f.getMonth() + 1;
+  let año = f.getFullYear();
+
+  return `${dia}/${mes}/${año}`;
+}
+➕ 6. Sumar días a una fecha
+let fecha = new Date();
+
+fecha.setDate(fecha.getDate() + 5);
+
+console.log(fecha);
+➖ 7. Restar fechas (MUY preguntado 💥)
+let f1 = new Date("2024-05-01");
+let f2 = new Date("2024-05-10");
+
+let diferencia = f2 - f1;
+
+let dias = diferencia / (1000 * 60 * 60 * 24);
+
+console.log(dias);
+🔍 8. Comparar fechas
+let f1 = new Date("2024-05-10");
+let f2 = new Date("2024-05-01");
+
+if (f1 > f2) {
+  console.log("f1 es posterior");
+}
+🎂 9. Calcular edad (MUY típico)
+function calcularEdad(fechaNacimiento) {
+  let hoy = new Date();
+  let nacimiento = new Date(fechaNacimiento);
+
+  let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+  if (
+    hoy.getMonth() < nacimiento.getMonth() ||
+    (hoy.getMonth() === nacimiento.getMonth() &&
+     hoy.getDate() < nacimiento.getDate())
+  ) {
+    edad--;
+  }
+
+  return edad;
+}
+📅 10. Saber si es fin de semana
+function esFinDeSemana(fecha) {
+  let dia = new Date(fecha).getDay();
+  return dia === 0 || dia === 6;
+}
+🧠 11. Obtener nombre del día
+let dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+let hoy = new Date();
+
+console.log(dias[hoy.getDay()]);
+🧪 12. Ejercicio típico completo (EXAMEN)
+
+👉 Registrar usuario con fecha:
+
+function crearUsuario(nombre) {
+  return {
+    nombre: nombre,
+    fechaAlta: new Date(),
+    activo: true
+  };
+}

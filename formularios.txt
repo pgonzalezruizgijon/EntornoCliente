@@ -1,0 +1,34 @@
+Saber que radio button esta seleccionado
+let radios = document.getElementsByName("sexo");
+
+for (let i = 0; i < radios.length; i++) {
+  if (radios[i].checked) {
+    alert(radios[i].value);
+  }
+}
+
+Ejemplo: Repetir contraseña
+<form>
+  <input type="password" id="pass1" required minlength="8">
+  <input type="password" id="pass2" required minlength="8">
+  <input type="submit" id="enviar" value="Enviar">
+</form>
+
+<script>
+function iniciar() {
+  document.querySelector("#enviar").addEventListener("click", validarPasswords);
+}
+
+function validarPasswords() {
+  let pass1 = document.querySelector("#pass1").value;
+  let pass2 = document.querySelector("#pass2");
+
+  if (pass1 === pass2.value) {
+    pass2.setCustomValidity("");
+  } else {
+    pass2.setCustomValidity("Las contraseñas no coinciden");
+  }
+}
+
+addEventListener("load", iniciar);
+</script>

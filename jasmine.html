@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apuntes Jasmine - Matchers y Tests</title>
+  <style>
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+      line-height: 1.5;
+    }
+    header {
+      background: #3b0764;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 2rem; }
+    header p { margin: 10px 0 0; color: #e9d5ff; }
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      z-index: 10;
+    }
+    nav a {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #3b0764;
+      background: #f3e8ff;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    main { max-width: 1100px; margin: auto; padding: 20px; }
+    section {
+      background: white;
+      margin-bottom: 25px;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    h2 {
+      margin-top: 0;
+      color: #3b0764;
+      border-bottom: 3px solid #f3e8ff;
+      padding-bottom: 8px;
+    }
+    h3 { color: #581c87; margin-top: 25px; }
+    pre {
+      background: #111827;
+      color: #f9fafb;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.92rem;
+    }
+    code { font-family: Consolas, monospace; }
+    .nota {
+      background: #fff7ed;
+      border-left: 5px solid #fb923c;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+    .ok {
+      background: #ecfdf5;
+      border-left: 5px solid #10b981;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+    .peligro {
+      background: #fef2f2;
+      border-left: 5px solid #ef4444;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      vertical-align: top;
+    }
+    th { background: #f3e8ff; color: #3b0764; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    .tarjeta {
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
+      border-radius: 10px;
+      padding: 15px;
+    }
+    footer { text-align: center; padding: 25px; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Apuntes Jasmine</h1>
+    <p>Matchers principales, tests de funciones, objetos, clases y errores</p>
+  </header>
+
+  <nav>
+    <a href="#estructura">Estructura</a>
+    <a href="#matchers">Matchers</a>
+    <a href="#objetos">Objetos y clases</a>
+    <a href="#errores">Errores</a>
+    <a href="#ejercicios">Ejercicios</a>
+    <a href="#chuleta">Chuleta</a>
+  </nav>
+
+  <main>
+    <section id="estructura">
+      <h2>1. Estructura básica de Jasmine</h2>
+      <p>Jasmine sirve para comprobar automáticamente si una función, objeto o clase funciona como esperamos.</p>
+
+      <div class="ok">
+        La estructura mental es: <strong>describe</strong> agrupa tests, <strong>it</strong> describe una prueba, <strong>expect</strong> comprueba el resultado.
+      </div>
+
+      <pre><code>describe("Nombre del bloque de pruebas", function() {
+
+  it("debería hacer algo concreto", function() {
+    let resultado = sumar(2, 3);
+    expect(resultado).toEqual(5);
+  });
+
+});</code></pre>
+
+      <h3>Ejemplo con una función</h3>
+      <pre><code>function sumar(a, b) {
+  return a + b;
+}
+
+describe("Función sumar", function() {
+
+  it("debería sumar dos números", function() {
+    expect(sumar(2, 3)).toEqual(5);
+  });
+
+});</code></pre>
+
+      <div class="nota">
+        En el examen, normalmente te dan funciones o clases y tú escribes los tests con <code>expect(...).matcher(...)</code>.
+      </div>
+    </section>
+
+    <section id="matchers">
+      <h2>2. Matchers principales traducidos</h2>
+      <p>Un matcher es la comprobación que va después de <code>expect()</code>.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Matcher</th>
+            <th>Sirve para...</th>
+            <th>Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>not</code></td>
+            <td>Niega la comprobación.</td>
+            <td><code>expect(x).not.toEqual(5);</code></td>
+          </tr>
+          <tr>
+            <td><code>toEqual()</code></td>
+            <td>Comprueba igualdad de valores, arrays y objetos.</td>
+            <td><code>expect([1,2]).toEqual([1,2]);</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeDefined()</code></td>
+            <td>Comprueba que algo está definido.</td>
+            <td><code>expect(resultado).toBeDefined();</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeUndefined()</code></td>
+            <td>Comprueba que algo es <code>undefined</code>.</td>
+            <td><code>expect(valor).toBeUndefined();</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeTrue()</code></td>
+            <td>Comprueba que es <code>true</code>.</td>
+            <td><code>expect(esMayorEdad(20)).toBeTrue();</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeFalse()</code></td>
+            <td>Comprueba que es <code>false</code>.</td>
+            <td><code>expect(esMayorEdad(15)).toBeFalse();</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeNull()</code></td>
+            <td>Comprueba que es <code>null</code>.</td>
+            <td><code>expect(usuario).toBeNull();</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeNaN()</code></td>
+            <td>Comprueba que es Not a Number.</td>
+            <td><code>expect(Number("hola")).toBeNaN();</code></td>
+          </tr>
+          <tr>
+            <td><code>toContain()</code></td>
+            <td>Comprueba que un array o string contiene algo.</td>
+            <td><code>expect(["PHP","JS"]).toContain("JS");</code></td>
+          </tr>
+          <tr>
+            <td><code>toHaveSize()</code></td>
+            <td>Comprueba tamaño de array/string/objeto.</td>
+            <td><code>expect([1,2]).toHaveSize(2);</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeGreaterThan()</code></td>
+            <td>Mayor que.</td>
+            <td><code>expect(10).toBeGreaterThan(5);</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeGreaterThanOrEqual()</code></td>
+            <td>Mayor o igual que.</td>
+            <td><code>expect(18).toBeGreaterThanOrEqual(18);</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeLessThan()</code></td>
+            <td>Menor que.</td>
+            <td><code>expect(3).toBeLessThan(10);</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeLessThanOrEqual()</code></td>
+            <td>Menor o igual que.</td>
+            <td><code>expect(120).toBeLessThanOrEqual(120);</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeCloseTo()</code></td>
+            <td>Compara decimales con precisión.</td>
+            <td><code>expect(3.1416).toBeCloseTo(3.142, 3);</code></td>
+          </tr>
+          <tr>
+            <td><code>toBeInstanceOf()</code></td>
+            <td>Comprueba si algo es instancia de una clase.</td>
+            <td><code>expect(new Alumno()).toBeInstanceOf(Alumno);</code></td>
+          </tr>
+          <tr>
+            <td><code>toThrowError()</code></td>
+            <td>Comprueba que una función lanza error.</td>
+            <td><code>expect(function(){ obj.metodo(); }).toThrowError();</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="comparaciones">
+      <h2>3. Ejemplos rápidos por tipo de dato</h2>
+
+      <div class="grid">
+        <div class="tarjeta">
+          <h3>Números</h3>
+          <pre><code>expect(edad).toBeGreaterThanOrEqual(18);
+expect(altura).toBeLessThanOrEqual(210);
+expect(media).toBeCloseTo(7.33, 2);</code></pre>
+        </div>
+
+        <div class="tarjeta">
+          <h3>Booleanos</h3>
+          <pre><code>expect(esMayorEdad(20)).toBeTrue();
+expect(esMayorEdad(15)).toBeFalse();</code></pre>
+        </div>
+
+        <div class="tarjeta">
+          <h3>Arrays</h3>
+          <pre><code>let lenguajes = ["PHP", "JS", "CSS"];
+expect(lenguajes).toContain("JS");
+expect(lenguajes).toHaveSize(3);
+expect(lenguajes).toEqual(["PHP", "JS", "CSS"]);</code></pre>
+        </div>
+
+        <div class="tarjeta">
+          <h3>Objetos</h3>
+          <pre><code>let alumno = { nombre: "Ana", edad: 20 };
+expect(alumno).toEqual({ nombre: "Ana", edad: 20 });
+expect(alumno.nombre).toEqual("Ana");
+expect(alumno.edad).toBeGreaterThanOrEqual(18);</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="objetos">
+      <h2>4. Tests con objetos y clases</h2>
+
+      <h3>Clase de ejemplo</h3>
+      <pre><code>class Alumno {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+
+  esMayorEdad() {
+    return this.edad >= 18;
+  }
+
+  cambiarEdad(edad) {
+    if (edad < 0) {
+      throw new Error("La edad no puede ser negativa");
+    }
+    this.edad = edad;
+  }
+}</code></pre>
+
+      <h3>Tests de la clase</h3>
+      <pre><code>describe("Clase Alumno", function() {
+
+  it("debería crear un alumno", function() {
+    let alumno = new Alumno("Luis", 20);
+
+    expect(alumno).toBeDefined();
+    expect(alumno).toBeInstanceOf(Alumno);
+    expect(alumno.nombre).toEqual("Luis");
+    expect(alumno.edad).toEqual(20);
+  });
+
+  it("debería comprobar si es mayor de edad", function() {
+    let alumno = new Alumno("Ana", 19);
+
+    expect(alumno.esMayorEdad()).toBeTrue();
+  });
+
+  it("debería comprobar si es menor de edad", function() {
+    let alumno = new Alumno("Pepe", 16);
+
+    expect(alumno.esMayorEdad()).toBeFalse();
+  });
+
+  it("debería cambiar la edad", function() {
+    let alumno = new Alumno("Marta", 20);
+
+    alumno.cambiarEdad(25);
+
+    expect(alumno.edad).toEqual(25);
+  });
+
+});</code></pre>
+    </section>
+
+    <section id="errores">
+      <h2>5. Testear errores con toThrowError</h2>
+
+      <p>Cuando una función debe lanzar un error, Jasmine lo comprueba con <code>toThrowError()</code>.</p>
+
+      <div class="peligro">
+        Importante: dentro de <code>expect()</code> se mete una función anónima. No se llama directamente al método.
+      </div>
+
+      <pre><code>// BIEN
+expect(function() {
+  alumno.cambiarEdad(-5);
+}).toThrowError("La edad no puede ser negativa");
+
+// MAL
+expect(alumno.cambiarEdad(-5)).toThrowError();</code></pre>
+
+      <h3>Ejemplo completo</h3>
+      <pre><code>it("debería lanzar error si la edad es negativa", function() {
+  let alumno = new Alumno("Luis", 20);
+
+  expect(function() {
+    alumno.cambiarEdad(-1);
+  }).toThrowError("La edad no puede ser negativa");
+});</code></pre>
+    </section>
+
+    <section id="ejercicios">
+      <h2>6. Ejercicios típicos resueltos</h2>
+
+      <h3>Ejercicio 1: función mayor de edad</h3>
+      <pre><code>function esMayorEdad(edad) {
+  return edad >= 18;
+}
+
+describe("Función esMayorEdad", function() {
+
+  it("debería devolver true con 18", function() {
+    expect(esMayorEdad(18)).toBeTrue();
+  });
+
+  it("debería devolver false con 17", function() {
+    expect(esMayorEdad(17)).toBeFalse();
+  });
+
+});</code></pre>
+
+      <h3>Ejercicio 2: función que devuelve un array</h3>
+      <pre><code>function obtenerPares(numeros) {
+  return numeros.filter(n =&gt; n % 2 === 0);
+}
+
+describe("Función obtenerPares", function() {
+
+  it("debería devolver solo los pares", function() {
+    expect(obtenerPares([1,2,3,4])).toEqual([2,4]);
+  });
+
+  it("debería devolver un array de tamaño 2", function() {
+    expect(obtenerPares([1,2,3,4])).toHaveSize(2);
+  });
+
+  it("debería contener el número 4", function() {
+    expect(obtenerPares([1,2,3,4])).toContain(4);
+  });
+
+});</code></pre>
+
+      <h3>Ejercicio 3: objeto producto</h3>
+      <pre><code>let producto = {
+  nombre: "Ratón",
+  precio: 15,
+  stock: 10
+};
+
+describe("Objeto producto", function() {
+
+  it("debería estar definido", function() {
+    expect(producto).toBeDefined();
+  });
+
+  it("debería tener precio mayor que 0", function() {
+    expect(producto.precio).toBeGreaterThan(0);
+  });
+
+  it("debería tener stock menor o igual que 100", function() {
+    expect(producto.stock).toBeLessThanOrEqual(100);
+  });
+
+});</code></pre>
+    </section>
+
+    <section id="chuleta">
+      <h2>7. Chuleta final para el examen</h2>
+
+      <pre><code>// Estructura básica
+describe("Bloque", function() {
+  it("debería hacer algo", function() {
+    expect(resultado).toEqual(esperado);
+  });
+});
+
+// Negar
+expect(valor).not.toEqual(5);
+
+// Booleanos
+expect(valor).toBeTrue();
+expect(valor).toBeFalse();
+
+// Números
+expect(valor).toBeGreaterThan(3);
+expect(valor).toBeGreaterThanOrEqual(18);
+expect(valor).toBeLessThan(10);
+expect(valor).toBeLessThanOrEqual(120);
+expect(valor).toBeCloseTo(3.14, 2);
+
+// Undefined / null / NaN
+expect(valor).toBeDefined();
+expect(valor).toBeUndefined();
+expect(valor).toBeNull();
+expect(valor).toBeNaN();
+
+// Arrays y strings
+expect(array).toContain(elemento);
+expect(string).toContain("texto");
+expect(array).toHaveSize(3);
+expect(array).toEqual([1,2,3]);
+
+// Objetos y clases
+expect(objeto).toEqual({ nombre: "Ana" });
+expect(objeto).toBeInstanceOf(Clase);
+
+// Errores
+expect(function() {
+  objeto.metodoIncorrecto();
+}).toThrowError("Mensaje del error");</code></pre>
+
+      <div class="ok">
+        Para aprobar: domina <code>toEqual</code>, <code>toBeTrue</code>, <code>toBeFalse</code>, <code>toContain</code>, <code>toHaveSize</code>, <code>toBeGreaterThanOrEqual</code> y <code>toThrowError</code>.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Apuntes rápidos de Jasmine para repasar antes del examen.
+  </footer>
+</body>
+</html>

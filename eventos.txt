@@ -1,0 +1,137 @@
+🖱️ CLICK
+document.getElementById("btn").addEventListener("click", () => {
+  alert("Has hecho click");
+});
+🔄 CHANGE (formularios 💥)
+document.getElementById("select").addEventListener("change", () => {
+  console.log("Valor cambiado");
+});
+
+👉 MUY típico en selects
+
+⌨️ TECLADO
+document.addEventListener("keydown", (e) => {
+  console.log(e.key);
+});
+
+👉 Puedes sacar info:
+
+e.key
+e.keyCode
+🖱️ MOUSEOVER / MOUSEOUT
+let div = document.getElementById("caja");
+
+div.addEventListener("mouseover", () => {
+  div.style.backgroundColor = "yellow";
+});
+
+div.addEventListener("mouseout", () => {
+  div.style.backgroundColor = "white";
+});
+🎯 FOCUS / BLUR (FORMULARIOS 🔥)
+let input = document.getElementById("nombre");
+
+input.addEventListener("focus", () => {
+  input.style.backgroundColor = "yellow";
+});
+
+input.addEventListener("blur", () => {
+  input.style.backgroundColor = "white";
+});
+
+👉 ESTO CAE MUCHO
+
+📄 LOAD (MUY IMPORTANTE)
+window.addEventListener("load", () => {
+  console.log("Página cargada");
+});
+
+👉 Sirve para esperar a que todo esté listo
+
+⚙️ 3. LAS 3 FORMAS DE AÑADIR EVENTOS (CLÁSICO EXAMEN)
+❌ 1. En HTML
+<button onclick="saludar()">Click</button>
+
+👉 Fácil pero poco profesional
+
+⚠️ 2. Propiedad JS
+boton.onclick = saludar;
+✅ 3. addEventListener (LA BUENA)
+boton.addEventListener("click", saludar);
+
+👉 ESTA ES LA CORRECTA 💥
+
+🧠 4. EVENTOS AVANZADOS (MUY PRO)
+🎯 Saber qué elemento lanzó el evento
+function manejarEvento(e) {
+  console.log(e.target); // elemento
+  console.log(e.type);   // tipo evento
+}
+
+👉 Esto es nivel examen bueno
+
+🖱️ Obtener posición del ratón
+document.addEventListener("mousemove", (e) => {
+  console.log(e.clientX, e.clientY);
+});
+🔥 Un solo manejador para varios elementos
+function evento(e) {
+  alert(`Elemento: ${e.target.id}`);
+}
+
+btn1.addEventListener("click", evento);
+btn2.addEventListener("click", evento);
+
+👉 Muy típico de pregunta teórica
+
+🚀 5. EJERCICIO TIPO EXAMEN (MEZCLA TODO)
+
+👉 Cambiar color al hacer focus y mostrar mensaje al hacer click:
+
+window.addEventListener("load", () => {
+  let input = document.getElementById("nombre");
+  let boton = document.getElementById("btn");
+
+  input.addEventListener("focus", () => {
+    input.style.backgroundColor = "yellow";
+  });
+
+  input.addEventListener("blur", () => {
+    input.style.backgroundColor = "white";
+  });
+
+  boton.addEventListener("click", () => {
+    alert("Formulario enviado");
+  });
+});
+
+
+
+🚀 EJEMPLOS TÍPICOS DE EXAMEN
+🖱️ Click
+btn.addEventListener("click", () => {
+  console.log("Click hecho");
+});
+🎯 Focus (formularios)
+input.addEventListener("focus", () => {
+  input.style.backgroundColor = "yellow";
+});
+❌ Blur
+input.addEventListener("blur", () => {
+  input.style.backgroundColor = "white";
+});
+🔄 Change
+select.addEventListener("change", () => {
+  console.log("Valor cambiado");
+});
+⌨️ Teclado
+document.addEventListener("keydown", (e) => {
+  console.log(e.key);
+});
+💥 CON OBJETO EVENTO (MUY IMPORTANTE)
+btn.addEventListener("click", function(e) {
+  console.log(e.target); // elemento
+  console.log(e.type);   // tipo evento
+});
+
+👉 Esto es nivel alto de examen
