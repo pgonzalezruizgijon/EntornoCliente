@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #eef2f5;
+    color: #1f2933;
+}
+
+.card {
+    width: min(920px, calc(100% - 32px));
+    margin: 40px auto;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+.panel-aviones {
+    position: relative;
+    width: min(100%, 657px);
+    margin: 24px auto;
+}
+
+.panel-aviones img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.zona {
+    position: absolute;
+    border: 2px solid rgba(11, 93, 146, 0.55);
+    background-color: rgba(11, 93, 146, 0.12);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.zona:hover,
+.zona:focus {
+    background-color: rgba(11, 93, 146, 0.22);
+    outline: none;
+}
+
+.resultado {
+    padding: 18px;
+    border: 1px solid #d9e2ec;
+    border-radius: 10px;
+    background-color: #f8fafc;
+}
+
+#info-avion {
+    min-height: 120px;
+}
